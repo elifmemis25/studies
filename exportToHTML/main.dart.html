@@ -1,0 +1,1968 @@
+<html>
+<head>
+<title>main.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000000;}
+.s1 { color: #008000; font-weight: bold;}
+.s2 { color: #000080; font-weight: bold;}
+.s3 { color: #0000ff;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.dart</font>
+</center></td></tr></table>
+<pre>import <span class="s1">'package:flutter/material.dart'</span>;
+<span class="s2">void </span>main(){
+  runApp(MyApp());
+}
+<span class="s2">class </span>MyApp <span class="s2">extends </span>StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    <span class="s2">return </span>MaterialApp(
+      debugShowCheckedModeBanner: <span class="s2">false</span>,
+      theme: ThemeData(
+          fontFamily: <span class="s1">'Lato'</span>
+      ),
+      home: MyHomePage(),
+      routes: {
+        <span class="s1">'/SleepPage' </span>: (context)=&gt;SleepPage(),
+        <span class="s1">'/FoodPage' </span>: (context)=&gt;FoodPage(),
+        <span class="s1">'/WaterPage' </span>: (context)=&gt;WaterPage(),
+        <span class="s1">'/MusicPage' </span>: (context)=&gt;MusicPage(),
+        <span class="s1">'/YogaPage' </span>: (context)=&gt;YogaPage(),
+        <span class="s1">'/SportPage' </span>: (context)=&gt;SportPage(),
+      },
+    );
+  }
+}
+<span class="s2">class </span>MyHomePage <span class="s2">extends </span>StatefulWidget {
+  @override
+  _MyHomePageState createState() =&gt; _MyHomePageState();
+}
+
+<span class="s2">class </span>_MyHomePageState <span class="s2">extends </span>State&lt;MyHomePage&gt; {
+  @override
+  Widget build(BuildContext context) {
+    <span class="s2">return </span>Scaffold(
+      backgroundColor: Color(<span class="s3">0xfff8f8f8</span>),
+      body: Stack(
+        children: &lt;Widget&gt;[
+          Column(
+            children: &lt;Widget&gt;[
+              Container(
+                height: MediaQuery.of(context).size.height*<span class="s3">0.43</span>,
+                width: MediaQuery.of(context).size.width,
+                color: Color(<span class="s3">0xffa0d8e1</span>),
+                child: Container(
+                  margin: EdgeInsets.only(right: <span class="s3">40</span>, top: <span class="s3">20</span>, bottom: <span class="s3">20</span>),
+                  alignment: Alignment.centerLeft,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(<span class="s1">'asset/splash.png'</span>),
+                          fit: BoxFit.contain
+                      )
+                  ),
+                ),
+              )
+            ],
+          ),
+          Column(
+            children: &lt;Widget&gt;[
+              SizedBox(height: <span class="s3">100</span>,),
+              Container(
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.all(<span class="s3">20</span>),
+                child: Text(<span class="s1">&quot;Welcome to \nHealthiApp&quot;</span>, style: TextStyle(
+
+                    fontSize: <span class="s3">40</span>,
+                    fontWeight: FontWeight.w700
+                ),),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width*<span class="s3">0.9</span>,
+                padding: EdgeInsets.symmetric(vertical: <span class="s3">5</span>, horizontal: <span class="s3">20</span>),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(<span class="s3">40</span>))
+                ),
+                child: Row(
+                  children: &lt;Widget&gt;[
+                    Icon(Icons.search,
+                      size: <span class="s3">30</span>,),
+                    SizedBox(width: <span class="s3">20</span>,),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: <span class="s1">'Search'</span>,
+                            hintStyle: TextStyle(
+                                fontSize: <span class="s3">20</span>
+                            )
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(height: <span class="s3">10</span>,),
+              Expanded(
+                child: GridView.count(crossAxisCount: <span class="s3">2</span>,
+                  childAspectRatio: <span class="s3">0.85</span>,
+                  children: &lt;Widget&gt;[
+                    categoryWidget(<span class="s1">'sleep'</span>, <span class="s1">&quot;Sleep&quot;</span>),
+                    categoryWidget(<span class="s1">'food'</span>, <span class="s1">&quot;Eating Habbits&quot;</span>),
+                    categoryWidget(<span class="s1">'water'</span>, <span class="s1">&quot;Water&quot;</span>),
+                    categoryWidget(<span class="s1">'music'</span>, <span class="s1">&quot;Music&quot;</span>),
+                    categoryWidget(<span class="s1">'yoga'</span>, <span class="s1">&quot;Yoga&quot;</span>),
+                    categoryWidget(<span class="s1">'sport'</span>, <span class="s1">&quot;Exercise&quot;</span>),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: <span class="s3">10</span>),
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: &lt;Widget&gt;[
+                    Column(
+                      children: &lt;Widget&gt;[
+
+                        Text(<span class="s1">'Today'</span>)
+                      ],
+                    ),
+                    Column(
+                      children: &lt;Widget&gt;[
+
+                        Text(<span class="s1">'Health and Wellness Tasks'</span>, style: TextStyle(
+                            color: Colors.blue[<span class="s3">900</span>],
+                            fontWeight: FontWeight.w700,
+                            fontSize: <span class="s3">20</span>
+                        ),)
+                      ],
+                    ),
+                    Column(
+                      children: &lt;Widget&gt;[
+                        Icon(Icons.settings),
+                        Text(<span class="s1">'Settings'</span>)
+                      ],
+                    ),
+                  ],
+                ),
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+  Container categoryWidget(String img, String title)
+  {
+    <span class="s2">return </span>Container(
+      margin: EdgeInsets.only(left: <span class="s3">10</span>, right: <span class="s3">10</span>, bottom: <span class="s3">20</span>),
+      width: MediaQuery.of(context).size.width*<span class="s3">0.3</span>,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(<span class="s3">30</span>)),
+          boxShadow: [BoxShadow(
+            color: Colors.black.withOpacity(<span class="s3">0.1</span>),
+            blurRadius: <span class="s3">20</span>,
+            spreadRadius: <span class="s3">1</span>,
+            offset: Offset(<span class="s3">0</span>,<span class="s3">10</span>),
+          )]
+      ),
+      child: InkWell(
+        onTap: (){openSleepPage(<span class="s1">'sleep'</span>, <span class="s1">'Sleep'</span>);},
+
+        child: InkWell(
+          onTap: (){openFoodPage(<span class="s1">'food'</span>, <span class="s1">'Eating Habbits'</span>);},
+
+          child: InkWell(
+            onTap: (){openWaterPage(<span class="s1">'water'</span>, <span class="s1">'Water'</span>);},
+
+            child: InkWell(
+              onTap: (){openMusicPage(<span class="s1">'music'</span>, <span class="s1">'Music'</span>);},
+
+              child: InkWell(
+                onTap: (){openYogaPage(<span class="s1">'yoga'</span>, <span class="s1">'Yoga'</span>);},
+
+                child: InkWell(
+                  onTap: (){openSportPage(<span class="s1">'sport'</span>, <span class="s1">'Exercise'</span>);},
+                  child: Column(
+                    children: &lt;Widget&gt;[
+                      SizedBox(height: <span class="s3">20</span>,),
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(<span class="s1">'asset/</span>$img<span class="s1">.png'</span>),
+                                  fit: BoxFit.contain
+                              )
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: <span class="s3">20</span>,),
+                      Container(
+                        padding: EdgeInsets.all(<span class="s3">20</span>),
+                        child: Text(<span class="s1">'</span>$title<span class="s1">'</span>, style: TextStyle(
+                          fontSize: <span class="s3">18</span>,
+                          fontWeight: FontWeight.w600,
+                        ),textAlign: TextAlign.center,
+                        ),
+                      ),
+                      SizedBox(height: <span class="s3">10</span>,)
+                    ],
+                  ),
+                ),
+              ),),),),),
+    );
+
+  }
+  <span class="s2">void </span>openSleepPage(String img, String title)
+  {
+    Navigator.pushNamed(context, <span class="s1">'/SleepPage'</span>, arguments: {<span class="s1">'image'</span>:<span class="s1">'sleep'</span>, <span class="s1">'title'</span>:<span class="s1">'Sleep'</span>});
+  }
+
+  <span class="s2">void </span>openFoodPage(String img, String title)
+  {
+    Navigator.pushNamed(context, <span class="s1">'/FoodPage'</span>, arguments: {<span class="s1">'image'</span>:<span class="s1">'food'</span>, <span class="s1">'title'</span>:<span class="s1">'Eating Habbits'</span>});
+  }
+
+  <span class="s2">void </span>openWaterPage(String img, String title)
+  {
+    Navigator.pushNamed(context, <span class="s1">'/WaterPage'</span>, arguments: {<span class="s1">'image'</span>:<span class="s1">'water'</span>, <span class="s1">'title'</span>:<span class="s1">'Water'</span>});
+  }
+
+  <span class="s2">void </span>openMusicPage(String img, String title)
+  {
+    Navigator.pushNamed(context, <span class="s1">'/MusicPage'</span>, arguments: {<span class="s1">'image'</span>:<span class="s1">'music'</span>, <span class="s1">'title'</span>:<span class="s1">'Music'</span>});
+  }
+
+  <span class="s2">void </span>openYogaPage(String img, String title)
+  {
+    Navigator.pushNamed(context, <span class="s1">'/YogaPage'</span>, arguments: {<span class="s1">'image'</span>:<span class="s1">'yoga'</span>, <span class="s1">'title'</span>:<span class="s1">'Yoga'</span>});
+  }
+
+  <span class="s2">void </span>openSportPage(String img, String title)
+  {
+    Navigator.pushNamed(context, <span class="s1">'/SportPage'</span>, arguments: {<span class="s1">'image'</span>:<span class="s1">'sport'</span>, <span class="s1">'title'</span>:<span class="s1">'Exercise'</span>});
+  }
+}
+
+
+
+
+<span class="s2">class </span>SleepPage <span class="s2">extends </span>StatefulWidget {
+  @override
+  _SleepPageState createState() =&gt; _SleepPageState();
+}
+
+<span class="s2">class </span>_SleepPageState <span class="s2">extends </span>State&lt;SleepPage&gt; {
+  @override
+  Widget build(BuildContext context) {
+    String selectedImg;
+    String selectTitle;
+    <span class="s2">final </span>Map arguments = ModalRoute.of(context).settings.arguments as Map;
+
+    <span class="s2">return </span>Scaffold(
+      backgroundColor: Color(<span class="s3">0xfff8f8f8</span>),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: <span class="s3">0</span>,
+        leading: IconButton(
+          onPressed: (){Navigator.pop(context);},
+          icon: Icon(Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
+      ),
+      extendBodyBehindAppBar: <span class="s2">true</span>,
+      body: Stack(
+        children: &lt;Widget&gt;[
+          Container(
+            height: MediaQuery.of(context).size.height*<span class="s3">0.43</span>,
+            width: MediaQuery.of(context).size.width,
+            color: Color(<span class="s3">0xffc7b8f5</span>),
+            child: Container(
+              margin: EdgeInsets.only(right: <span class="s3">40</span>, top: <span class="s3">20</span>, bottom: <span class="s3">20</span>),
+              alignment: Alignment.centerLeft,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(<span class="s1">'asset/splash.png'</span>),
+                      fit: BoxFit.contain
+                  )
+              ),
+            ),
+          ),
+          Column(
+            children: &lt;Widget&gt;[
+              SizedBox(height: <span class="s3">90</span>,),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: &lt;Widget&gt;[
+                        Container(
+                          padding: EdgeInsets.only(left: <span class="s3">20</span>, right: <span class="s3">20</span>),
+                          child: Text(<span class="s1">'</span>$selectTitle<span class="s1">'</span>, style: TextStyle(
+                              fontSize: <span class="s3">40</span>,
+                              fontWeight: FontWeight.w700
+                          ),),
+                        ),
+                        SizedBox(height: <span class="s3">10</span>,),
+                        Row(
+                          children: &lt;Widget&gt;[
+                            Container(
+                              padding: EdgeInsets.only(left: <span class="s3">20</span>),
+                              width: MediaQuery.of(context).size.width*<span class="s3">0.7</span>,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: &lt;Widget&gt;[
+                                  Text(<span class="s1">'3-10 Min Course'</span>, style: TextStyle(
+                                      fontSize: <span class="s3">19</span>,
+                                      fontWeight: FontWeight.w600
+                                  ),),
+                                  SizedBox(height: <span class="s3">10</span>,),
+                                  Text(<span class="s1">'Nothing is better than a good night sleep.'</span>, style: TextStyle(
+                                      fontSize: <span class="s3">18</span>,
+                                      fontWeight: FontWeight.w600
+                                  ),),
+                                  SizedBox(height: <span class="s3">10</span>,),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width*<span class="s3">0.9</span>,
+                                    margin: EdgeInsets.only(right: <span class="s3">20</span>),
+                                    padding: EdgeInsets.symmetric(vertical: <span class="s3">5</span>, horizontal: <span class="s3">20</span>),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(Radius.circular(<span class="s3">40</span>)),
+
+                                    ),
+                                    child: Row(
+                                      children: &lt;Widget&gt;[
+                                        Icon(Icons.search, size: <span class="s3">30</span>,),
+                                        SizedBox(width: <span class="s3">20</span>,),
+                                        Expanded(
+                                          child: TextField(
+                                            decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                hintText: <span class="s1">'Search'</span>,
+                                                hintStyle: TextStyle(
+                                                  fontSize: <span class="s3">20</span>,
+                                                )
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                padding: EdgeInsets.all(<span class="s3">70</span>),
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(<span class="s1">'asset/</span>$selectedImg<span class="s1">.png'</span>),
+                                        fit: BoxFit.contain
+                                    )
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(height: <span class="s3">5</span>,),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.all(<span class="s3">10</span>),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: &lt;Widget&gt;[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: &lt;Widget&gt;[
+                                  sessionWidget(<span class="s1">'Session 1'</span>, <span class="s2">true</span>),
+                                  sessionWidget(<span class="s1">'Session 2'</span>, <span class="s2">false</span>),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: &lt;Widget&gt;[
+                                  sessionWidget(<span class="s1">'Session 3'</span>, <span class="s2">false</span>),
+                                  sessionWidget(<span class="s1">'Session 4'</span>, <span class="s2">false</span>),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: &lt;Widget&gt;[
+                                  sessionWidget(<span class="s1">'Session 5'</span>, <span class="s2">false</span>),
+                                  sessionWidget(<span class="s1">'Session 6'</span>, <span class="s2">false</span>),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: <span class="s3">20</span>, vertical: <span class="s3">10</span>),
+                          child: Text(<span class="s1">'</span>$selectTitle<span class="s1">'</span>, style: TextStyle(
+                              fontSize: <span class="s3">25</span>,
+                              fontWeight: FontWeight.w700
+                          ),),
+                        ),
+                        SizedBox(height: <span class="s3">10</span>,),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: <span class="s3">20</span>),
+                          padding: EdgeInsets.all(<span class="s3">10</span>),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(<span class="s3">20</span>)),
+                              color: Colors.white,
+                              boxShadow: [BoxShadow(
+                                  color: Colors.black.withOpacity(<span class="s3">0.15</span>),
+                                  blurRadius: <span class="s3">15</span>,
+                                  spreadRadius: <span class="s3">1</span>
+                              )]
+                          ),
+                          child: Row(
+                            children: &lt;Widget&gt;[
+                              Container(
+                                padding: EdgeInsets.all(<span class="s3">50</span>),
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(<span class="s1">'asset/</span>$selectedImg<span class="s1">.png'</span>)
+                                    )
+                                ),
+                              ),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: &lt;Widget&gt;[
+                                    Text(<span class="s1">'Basics 2'</span>, style: TextStyle(
+                                        fontSize: <span class="s3">22</span>,
+                                        fontWeight: FontWeight.w700
+                                    ),),
+                                    Text(<span class="s1">'Start and deepen your patience'</span>, style: TextStyle(
+                                        fontSize: <span class="s3">20</span>,
+                                        fontWeight: FontWeight.w600
+                                    ),)
+                                  ],
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: (){},
+                                icon: Icon(
+                                  Icons.lock_outline,
+                                  size: <span class="s3">30</span>,
+                                  color: Colors.black,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: <span class="s3">30</span>,)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: <span class="s3">10</span>),
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: &lt;Widget&gt;[
+                    Column(
+                      children: &lt;Widget&gt;[
+
+                        Text(<span class="s1">'Today'</span>)
+                      ],
+                    ),
+                    Column(
+                      children: &lt;Widget&gt;[
+
+                        Text(<span class="s1">'All Exercise'</span>, style: TextStyle(
+                            color: Colors.orange,
+                            fontWeight: FontWeight.w700,
+                            fontSize: <span class="s3">20</span>
+                        ),)
+                      ],
+                    ),
+                    Column(
+                      children: &lt;Widget&gt;[
+                        Icon(Icons.settings),
+                        Text(<span class="s1">'Settings'</span>)
+                      ],
+                    ),
+                  ],
+                ),
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+  Container sessionWidget(String title, bool activeOrNot)
+  {
+    <span class="s2">return </span>Container(
+      padding: EdgeInsets.symmetric(horizontal: <span class="s3">20</span>, vertical: <span class="s3">15</span>),
+      margin: EdgeInsets.only(bottom: <span class="s3">10</span>),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(<span class="s3">20</span>)),
+          color: Colors.white,
+          boxShadow: [BoxShadow(
+              color: Colors.black.withOpacity(<span class="s3">0.15</span>),
+              blurRadius: <span class="s3">15</span>,
+              spreadRadius: <span class="s3">1</span>
+          )]
+      ),
+      child: Row(
+        children: &lt;Widget&gt;[
+          Icon(
+            (activeOrNot == <span class="s2">true</span>) ? Icons.play_circle_filled : Icons.play_circle_outline,
+            color: Color(<span class="s3">0xff817dc0</span>),
+            size: <span class="s3">50</span>,
+          ),
+          SizedBox(width: <span class="s3">10</span>,),
+          Text(<span class="s1">'</span>$title<span class="s1">'</span>, style: TextStyle(
+              fontSize: <span class="s3">18</span>,
+              fontWeight: FontWeight.w600
+          ),)
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+<span class="s2">class </span>FoodPage <span class="s2">extends </span>StatefulWidget {
+  @override
+  _FoodPageState createState() =&gt; _FoodPageState();
+}
+
+<span class="s2">class </span>_FoodPageState <span class="s2">extends </span>State&lt;FoodPage&gt; {
+  @override
+  Widget build(BuildContext context) {
+    String selectedImg;
+    String selectTitle;
+    <span class="s2">final </span>Map arguments = ModalRoute.of(context).settings.arguments as Map;
+
+    <span class="s2">return </span>Scaffold(
+      backgroundColor: Color(<span class="s3">0xfff8f8f8</span>),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: <span class="s3">0</span>,
+        leading: IconButton(
+          onPressed: (){Navigator.pop(context);},
+          icon: Icon(Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
+      ),
+      extendBodyBehindAppBar: <span class="s2">true</span>,
+      body: Stack(
+        children: &lt;Widget&gt;[
+          Container(
+            height: MediaQuery.of(context).size.height*<span class="s3">0.43</span>,
+            width: MediaQuery.of(context).size.width,
+            color: Color(<span class="s3">0xffc7b8f5</span>),
+            child: Container(
+              margin: EdgeInsets.only(right: <span class="s3">40</span>, top: <span class="s3">20</span>, bottom: <span class="s3">20</span>),
+              alignment: Alignment.centerLeft,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(<span class="s1">'asset/splash.png'</span>),
+                      fit: BoxFit.contain
+                  )
+              ),
+            ),
+          ),
+          Column(
+            children: &lt;Widget&gt;[
+              SizedBox(height: <span class="s3">90</span>,),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: &lt;Widget&gt;[
+                        Container(
+                          padding: EdgeInsets.only(left: <span class="s3">20</span>, right: <span class="s3">20</span>),
+                          child: Text(<span class="s1">'</span>$selectTitle<span class="s1">'</span>, style: TextStyle(
+                              fontSize: <span class="s3">40</span>,
+                              fontWeight: FontWeight.w700
+                          ),),
+                        ),
+                        SizedBox(height: <span class="s3">10</span>,),
+                        Row(
+                          children: &lt;Widget&gt;[
+                            Container(
+                              padding: EdgeInsets.only(left: <span class="s3">20</span>),
+                              width: MediaQuery.of(context).size.width*<span class="s3">0.7</span>,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: &lt;Widget&gt;[
+                                  Text(<span class="s1">'3-10 Min Course'</span>, style: TextStyle(
+                                      fontSize: <span class="s3">19</span>,
+                                      fontWeight: FontWeight.w600
+                                  ),),
+                                  SizedBox(height: <span class="s3">10</span>,),
+                                  Text(<span class="s1">'Eating healthy food fills your body with energy and nutrients. Imagine your cells smiling back at you and saying: Thank you!'</span>, style: TextStyle(
+                                      fontSize: <span class="s3">18</span>,
+                                      fontWeight: FontWeight.w600
+                                  ),),
+                                  SizedBox(height: <span class="s3">10</span>,),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width*<span class="s3">0.9</span>,
+                                    margin: EdgeInsets.only(right: <span class="s3">20</span>),
+                                    padding: EdgeInsets.symmetric(vertical: <span class="s3">5</span>, horizontal: <span class="s3">20</span>),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(Radius.circular(<span class="s3">40</span>)),
+
+                                    ),
+                                    child: Row(
+                                      children: &lt;Widget&gt;[
+                                        Icon(Icons.search, size: <span class="s3">30</span>,),
+                                        SizedBox(width: <span class="s3">20</span>,),
+                                        Expanded(
+                                          child: TextField(
+                                            decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                hintText: <span class="s1">'Search'</span>,
+                                                hintStyle: TextStyle(
+                                                  fontSize: <span class="s3">20</span>,
+                                                )
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                padding: EdgeInsets.all(<span class="s3">70</span>),
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(<span class="s1">'asset/</span>$selectedImg<span class="s1">.png'</span>),
+                                        fit: BoxFit.contain
+                                    )
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(height: <span class="s3">5</span>,),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.all(<span class="s3">10</span>),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: &lt;Widget&gt;[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: &lt;Widget&gt;[
+                                  sessionWidget(<span class="s1">'Session 1'</span>, <span class="s2">true</span>),
+                                  sessionWidget(<span class="s1">'Session 2'</span>, <span class="s2">false</span>),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: &lt;Widget&gt;[
+                                  sessionWidget(<span class="s1">'Session 3'</span>, <span class="s2">false</span>),
+                                  sessionWidget(<span class="s1">'Session 4'</span>, <span class="s2">false</span>),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: &lt;Widget&gt;[
+                                  sessionWidget(<span class="s1">'Session 5'</span>, <span class="s2">false</span>),
+                                  sessionWidget(<span class="s1">'Session 6'</span>, <span class="s2">false</span>),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: <span class="s3">20</span>, vertical: <span class="s3">10</span>),
+                          child: Text(<span class="s1">'</span>$selectTitle<span class="s1">'</span>, style: TextStyle(
+                              fontSize: <span class="s3">25</span>,
+                              fontWeight: FontWeight.w700
+                          ),),
+                        ),
+                        SizedBox(height: <span class="s3">10</span>,),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: <span class="s3">20</span>),
+                          padding: EdgeInsets.all(<span class="s3">10</span>),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(<span class="s3">20</span>)),
+                              color: Colors.white,
+                              boxShadow: [BoxShadow(
+                                  color: Colors.black.withOpacity(<span class="s3">0.15</span>),
+                                  blurRadius: <span class="s3">15</span>,
+                                  spreadRadius: <span class="s3">1</span>
+                              )]
+                          ),
+                          child: Row(
+                            children: &lt;Widget&gt;[
+                              Container(
+                                padding: EdgeInsets.all(<span class="s3">50</span>),
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(<span class="s1">'asset/</span>$selectedImg<span class="s1">.png'</span>)
+                                    )
+                                ),
+                              ),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: &lt;Widget&gt;[
+                                    Text(<span class="s1">'Basics 2'</span>, style: TextStyle(
+                                        fontSize: <span class="s3">22</span>,
+                                        fontWeight: FontWeight.w700
+                                    ),),
+                                    Text(<span class="s1">'Start and deepen your patience'</span>, style: TextStyle(
+                                        fontSize: <span class="s3">20</span>,
+                                        fontWeight: FontWeight.w600
+                                    ),)
+                                  ],
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: (){},
+                                icon: Icon(
+                                  Icons.lock_outline,
+                                  size: <span class="s3">30</span>,
+                                  color: Colors.black,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: <span class="s3">30</span>,)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: <span class="s3">10</span>),
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: &lt;Widget&gt;[
+                    Column(
+                      children: &lt;Widget&gt;[
+
+                        Text(<span class="s1">'Today'</span>)
+                      ],
+                    ),
+                    Column(
+                      children: &lt;Widget&gt;[
+
+                        Text(<span class="s1">'All Exercise'</span>, style: TextStyle(
+                            color: Colors.orange,
+                            fontWeight: FontWeight.w700,
+                            fontSize: <span class="s3">20</span>
+                        ),)
+                      ],
+                    ),
+                    Column(
+                      children: &lt;Widget&gt;[
+                        Icon(Icons.settings),
+                        Text(<span class="s1">'Settings'</span>)
+                      ],
+                    ),
+                  ],
+                ),
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+  Container sessionWidget(String title, bool activeOrNot)
+  {
+    <span class="s2">return </span>Container(
+      padding: EdgeInsets.symmetric(horizontal: <span class="s3">20</span>, vertical: <span class="s3">15</span>),
+      margin: EdgeInsets.only(bottom: <span class="s3">10</span>),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(<span class="s3">20</span>)),
+          color: Colors.white,
+          boxShadow: [BoxShadow(
+              color: Colors.black.withOpacity(<span class="s3">0.15</span>),
+              blurRadius: <span class="s3">15</span>,
+              spreadRadius: <span class="s3">1</span>
+          )]
+      ),
+      child: Row(
+        children: &lt;Widget&gt;[
+          Icon(
+            (activeOrNot == <span class="s2">true</span>) ? Icons.play_circle_filled : Icons.play_circle_outline,
+            color: Color(<span class="s3">0xff817dc0</span>),
+            size: <span class="s3">50</span>,
+          ),
+          SizedBox(width: <span class="s3">10</span>,),
+          Text(<span class="s1">'</span>$title<span class="s1">'</span>, style: TextStyle(
+              fontSize: <span class="s3">18</span>,
+              fontWeight: FontWeight.w600
+          ),)
+        ],
+      ),
+    );
+  }
+}
+
+
+
+<span class="s2">class </span>WaterPage <span class="s2">extends </span>StatefulWidget {
+  @override
+  _WaterPageState createState() =&gt; _WaterPageState();
+}
+
+<span class="s2">class </span>_WaterPageState <span class="s2">extends </span>State&lt;WaterPage&gt; {
+  @override
+  Widget build(BuildContext context) {
+    String selectedImg;
+    String selectTitle;
+    <span class="s2">final </span>Map arguments = ModalRoute.of(context).settings.arguments as Map;
+
+    <span class="s2">return </span>Scaffold(
+      backgroundColor: Color(<span class="s3">0xfff8f8f8</span>),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: <span class="s3">0</span>,
+        leading: IconButton(
+          onPressed: (){Navigator.pop(context);},
+          icon: Icon(Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
+      ),
+      extendBodyBehindAppBar: <span class="s2">true</span>,
+      body: Stack(
+        children: &lt;Widget&gt;[
+          Container(
+            height: MediaQuery.of(context).size.height*<span class="s3">0.43</span>,
+            width: MediaQuery.of(context).size.width,
+            color: Color(<span class="s3">0xffc7b8f5</span>),
+            child: Container(
+              margin: EdgeInsets.only(right: <span class="s3">40</span>, top: <span class="s3">20</span>, bottom: <span class="s3">20</span>),
+              alignment: Alignment.centerLeft,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(<span class="s1">'asset/splash.png'</span>),
+                      fit: BoxFit.contain
+                  )
+              ),
+            ),
+          ),
+          Column(
+            children: &lt;Widget&gt;[
+              SizedBox(height: <span class="s3">90</span>,),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: &lt;Widget&gt;[
+                        Container(
+                          padding: EdgeInsets.only(left: <span class="s3">20</span>, right: <span class="s3">20</span>),
+                          child: Text(<span class="s1">'</span>$selectTitle<span class="s1">'</span>, style: TextStyle(
+                              fontSize: <span class="s3">40</span>,
+                              fontWeight: FontWeight.w700
+                          ),),
+                        ),
+                        SizedBox(height: <span class="s3">10</span>,),
+                        Row(
+                          children: &lt;Widget&gt;[
+                            Container(
+                              padding: EdgeInsets.only(left: <span class="s3">20</span>),
+                              width: MediaQuery.of(context).size.width*<span class="s3">0.7</span>,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: &lt;Widget&gt;[
+                                  Text(<span class="s1">'3-10 Min Course'</span>, style: TextStyle(
+                                      fontSize: <span class="s3">19</span>,
+                                      fontWeight: FontWeight.w600
+                                  ),),
+                                  SizedBox(height: <span class="s3">10</span>,),
+                                  Text(<span class="s1">'Drink more water. Your skin, your hair, your mind and body will thank you.'</span>, style: TextStyle(
+                                      fontSize: <span class="s3">18</span>,
+                                      fontWeight: FontWeight.w600
+                                  ),),
+                                  SizedBox(height: <span class="s3">10</span>,),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width*<span class="s3">0.9</span>,
+                                    margin: EdgeInsets.only(right: <span class="s3">20</span>),
+                                    padding: EdgeInsets.symmetric(vertical: <span class="s3">5</span>, horizontal: <span class="s3">20</span>),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(Radius.circular(<span class="s3">40</span>)),
+
+                                    ),
+                                    child: Row(
+                                      children: &lt;Widget&gt;[
+                                        Icon(Icons.search, size: <span class="s3">30</span>,),
+                                        SizedBox(width: <span class="s3">20</span>,),
+                                        Expanded(
+                                          child: TextField(
+                                            decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                hintText: <span class="s1">'Search'</span>,
+                                                hintStyle: TextStyle(
+                                                  fontSize: <span class="s3">20</span>,
+                                                )
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                padding: EdgeInsets.all(<span class="s3">70</span>),
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(<span class="s1">'asset/</span>$selectedImg<span class="s1">.png'</span>),
+                                        fit: BoxFit.contain
+                                    )
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(height: <span class="s3">5</span>,),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.all(<span class="s3">10</span>),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: &lt;Widget&gt;[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: &lt;Widget&gt;[
+                                  sessionWidget(<span class="s1">'Session 1'</span>, <span class="s2">true</span>),
+                                  sessionWidget(<span class="s1">'Session 2'</span>, <span class="s2">false</span>),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: &lt;Widget&gt;[
+                                  sessionWidget(<span class="s1">'Session 3'</span>, <span class="s2">false</span>),
+                                  sessionWidget(<span class="s1">'Session 4'</span>, <span class="s2">false</span>),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: &lt;Widget&gt;[
+                                  sessionWidget(<span class="s1">'Session 5'</span>, <span class="s2">false</span>),
+                                  sessionWidget(<span class="s1">'Session 6'</span>, <span class="s2">false</span>),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: <span class="s3">20</span>, vertical: <span class="s3">10</span>),
+                          child: Text(<span class="s1">'</span>$selectTitle<span class="s1">'</span>, style: TextStyle(
+                              fontSize: <span class="s3">25</span>,
+                              fontWeight: FontWeight.w700
+                          ),),
+                        ),
+                        SizedBox(height: <span class="s3">10</span>,),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: <span class="s3">20</span>),
+                          padding: EdgeInsets.all(<span class="s3">10</span>),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(<span class="s3">20</span>)),
+                              color: Colors.white,
+                              boxShadow: [BoxShadow(
+                                  color: Colors.black.withOpacity(<span class="s3">0.15</span>),
+                                  blurRadius: <span class="s3">15</span>,
+                                  spreadRadius: <span class="s3">1</span>
+                              )]
+                          ),
+                          child: Row(
+                            children: &lt;Widget&gt;[
+                              Container(
+                                padding: EdgeInsets.all(<span class="s3">50</span>),
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(<span class="s1">'asset/</span>$selectedImg<span class="s1">.png'</span>)
+                                    )
+                                ),
+                              ),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: &lt;Widget&gt;[
+                                    Text(<span class="s1">'Basics 2'</span>, style: TextStyle(
+                                        fontSize: <span class="s3">22</span>,
+                                        fontWeight: FontWeight.w700
+                                    ),),
+                                    Text(<span class="s1">'Start and deepen your patience'</span>, style: TextStyle(
+                                        fontSize: <span class="s3">20</span>,
+                                        fontWeight: FontWeight.w600
+                                    ),)
+                                  ],
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: (){},
+                                icon: Icon(
+                                  Icons.lock_outline,
+                                  size: <span class="s3">30</span>,
+                                  color: Colors.black,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: <span class="s3">30</span>,)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: <span class="s3">10</span>),
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: &lt;Widget&gt;[
+                    Column(
+                      children: &lt;Widget&gt;[
+
+                        Text(<span class="s1">'Today'</span>)
+                      ],
+                    ),
+                    Column(
+                      children: &lt;Widget&gt;[
+
+                        Text(<span class="s1">'All Exercise'</span>, style: TextStyle(
+                            color: Colors.orange,
+                            fontWeight: FontWeight.w700,
+                            fontSize: <span class="s3">20</span>
+                        ),)
+                      ],
+                    ),
+                    Column(
+                      children: &lt;Widget&gt;[
+                        Icon(Icons.settings),
+                        Text(<span class="s1">'Settings'</span>)
+                      ],
+                    ),
+                  ],
+                ),
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+  Container sessionWidget(String title, bool activeOrNot)
+  {
+    <span class="s2">return </span>Container(
+      padding: EdgeInsets.symmetric(horizontal: <span class="s3">20</span>, vertical: <span class="s3">15</span>),
+      margin: EdgeInsets.only(bottom: <span class="s3">10</span>),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(<span class="s3">20</span>)),
+          color: Colors.white,
+          boxShadow: [BoxShadow(
+              color: Colors.black.withOpacity(<span class="s3">0.15</span>),
+              blurRadius: <span class="s3">15</span>,
+              spreadRadius: <span class="s3">1</span>
+          )]
+      ),
+      child: Row(
+        children: &lt;Widget&gt;[
+          Icon(
+            (activeOrNot == <span class="s2">true</span>) ? Icons.play_circle_filled : Icons.play_circle_outline,
+            color: Color(<span class="s3">0xff817dc0</span>),
+            size: <span class="s3">50</span>,
+          ),
+          SizedBox(width: <span class="s3">10</span>,),
+          Text(<span class="s1">'</span>$title<span class="s1">'</span>, style: TextStyle(
+              fontSize: <span class="s3">18</span>,
+              fontWeight: FontWeight.w600
+          ),)
+        ],
+      ),
+    );
+  }
+}
+
+
+
+<span class="s2">class </span>MusicPage <span class="s2">extends </span>StatefulWidget {
+  @override
+  _MusicPageState createState() =&gt; _MusicPageState();
+}
+
+<span class="s2">class </span>_MusicPageState <span class="s2">extends </span>State&lt;MusicPage&gt; {
+  @override
+  Widget build(BuildContext context) {
+    String selectedImg;
+    String selectTitle;
+    <span class="s2">final </span>Map arguments = ModalRoute.of(context).settings.arguments as Map;
+
+    <span class="s2">return </span>Scaffold(
+      backgroundColor: Color(<span class="s3">0xfff8f8f8</span>),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: <span class="s3">0</span>,
+        leading: IconButton(
+          onPressed: (){Navigator.pop(context);},
+          icon: Icon(Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
+      ),
+      extendBodyBehindAppBar: <span class="s2">true</span>,
+      body: Stack(
+        children: &lt;Widget&gt;[
+          Container(
+            height: MediaQuery.of(context).size.height*<span class="s3">0.43</span>,
+            width: MediaQuery.of(context).size.width,
+            color: Color(<span class="s3">0xffc7b8f5</span>),
+            child: Container(
+              margin: EdgeInsets.only(right: <span class="s3">40</span>, top: <span class="s3">20</span>, bottom: <span class="s3">20</span>),
+              alignment: Alignment.centerLeft,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(<span class="s1">'asset/splash.png'</span>),
+                      fit: BoxFit.contain
+                  )
+              ),
+            ),
+          ),
+          Column(
+            children: &lt;Widget&gt;[
+              SizedBox(height: <span class="s3">90</span>,),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: &lt;Widget&gt;[
+                        Container(
+                          padding: EdgeInsets.only(left: <span class="s3">20</span>, right: <span class="s3">20</span>),
+                          child: Text(<span class="s1">'</span>$selectTitle<span class="s1">'</span>, style: TextStyle(
+                              fontSize: <span class="s3">40</span>,
+                              fontWeight: FontWeight.w700
+                          ),),
+                        ),
+                        SizedBox(height: <span class="s3">10</span>,),
+                        Row(
+                          children: &lt;Widget&gt;[
+                            Container(
+                              padding: EdgeInsets.only(left: <span class="s3">20</span>),
+                              width: MediaQuery.of(context).size.width*<span class="s3">0.7</span>,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: &lt;Widget&gt;[
+                                  Text(<span class="s1">'3-10 Min Course'</span>, style: TextStyle(
+                                      fontSize: <span class="s3">19</span>,
+                                      fontWeight: FontWeight.w600
+                                  ),),
+                                  SizedBox(height: <span class="s3">10</span>,),
+                                  Text(<span class="s1">'Music can enhance the function of neural networks, slow the heart rate, lower blood pressure, reduce levels of stress hormones.'</span>, style: TextStyle(
+                                      fontSize: <span class="s3">18</span>,
+                                      fontWeight: FontWeight.w600
+                                  ),),
+                                  SizedBox(height: <span class="s3">10</span>,),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width*<span class="s3">0.9</span>,
+                                    margin: EdgeInsets.only(right: <span class="s3">20</span>),
+                                    padding: EdgeInsets.symmetric(vertical: <span class="s3">5</span>, horizontal: <span class="s3">20</span>),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(Radius.circular(<span class="s3">40</span>)),
+
+                                    ),
+                                    child: Row(
+                                      children: &lt;Widget&gt;[
+                                        Icon(Icons.search, size: <span class="s3">30</span>,),
+                                        SizedBox(width: <span class="s3">20</span>,),
+                                        Expanded(
+                                          child: TextField(
+                                            decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                hintText: <span class="s1">'Search'</span>,
+                                                hintStyle: TextStyle(
+                                                  fontSize: <span class="s3">20</span>,
+                                                )
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                padding: EdgeInsets.all(<span class="s3">70</span>),
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(<span class="s1">'asset/</span>$selectedImg<span class="s1">.png'</span>),
+                                        fit: BoxFit.contain
+                                    )
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(height: <span class="s3">5</span>,),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.all(<span class="s3">10</span>),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: &lt;Widget&gt;[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: &lt;Widget&gt;[
+                                  sessionWidget(<span class="s1">'Session 1'</span>, <span class="s2">true</span>),
+                                  sessionWidget(<span class="s1">'Session 2'</span>, <span class="s2">false</span>),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: &lt;Widget&gt;[
+                                  sessionWidget(<span class="s1">'Session 3'</span>, <span class="s2">false</span>),
+                                  sessionWidget(<span class="s1">'Session 4'</span>, <span class="s2">false</span>),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: &lt;Widget&gt;[
+                                  sessionWidget(<span class="s1">'Session 5'</span>, <span class="s2">false</span>),
+                                  sessionWidget(<span class="s1">'Session 6'</span>, <span class="s2">false</span>),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: <span class="s3">20</span>, vertical: <span class="s3">10</span>),
+                          child: Text(<span class="s1">'</span>$selectTitle<span class="s1">'</span>, style: TextStyle(
+                              fontSize: <span class="s3">25</span>,
+                              fontWeight: FontWeight.w700
+                          ),),
+                        ),
+                        SizedBox(height: <span class="s3">10</span>,),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: <span class="s3">20</span>),
+                          padding: EdgeInsets.all(<span class="s3">10</span>),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(<span class="s3">20</span>)),
+                              color: Colors.white,
+                              boxShadow: [BoxShadow(
+                                  color: Colors.black.withOpacity(<span class="s3">0.15</span>),
+                                  blurRadius: <span class="s3">15</span>,
+                                  spreadRadius: <span class="s3">1</span>
+                              )]
+                          ),
+                          child: Row(
+                            children: &lt;Widget&gt;[
+                              Container(
+                                padding: EdgeInsets.all(<span class="s3">50</span>),
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(<span class="s1">'asset/</span>$selectedImg<span class="s1">.png'</span>)
+                                    )
+                                ),
+                              ),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: &lt;Widget&gt;[
+                                    Text(<span class="s1">'Basics 2'</span>, style: TextStyle(
+                                        fontSize: <span class="s3">22</span>,
+                                        fontWeight: FontWeight.w700
+                                    ),),
+                                    Text(<span class="s1">'Start and deepen your patience'</span>, style: TextStyle(
+                                        fontSize: <span class="s3">20</span>,
+                                        fontWeight: FontWeight.w600
+                                    ),)
+                                  ],
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: (){},
+                                icon: Icon(
+                                  Icons.lock_outline,
+                                  size: <span class="s3">30</span>,
+                                  color: Colors.black,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: <span class="s3">30</span>,)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: <span class="s3">10</span>),
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: &lt;Widget&gt;[
+                    Column(
+                      children: &lt;Widget&gt;[
+
+                        Text(<span class="s1">'Today'</span>)
+                      ],
+                    ),
+                    Column(
+                      children: &lt;Widget&gt;[
+
+                        Text(<span class="s1">'All Exercise'</span>, style: TextStyle(
+                            color: Colors.orange,
+                            fontWeight: FontWeight.w700,
+                            fontSize: <span class="s3">20</span>
+                        ),)
+                      ],
+                    ),
+                    Column(
+                      children: &lt;Widget&gt;[
+                        Icon(Icons.settings),
+                        Text(<span class="s1">'Settings'</span>)
+                      ],
+                    ),
+                  ],
+                ),
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+  Container sessionWidget(String title, bool activeOrNot)
+  {
+    <span class="s2">return </span>Container(
+      padding: EdgeInsets.symmetric(horizontal: <span class="s3">20</span>, vertical: <span class="s3">15</span>),
+      margin: EdgeInsets.only(bottom: <span class="s3">10</span>),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(<span class="s3">20</span>)),
+          color: Colors.white,
+          boxShadow: [BoxShadow(
+              color: Colors.black.withOpacity(<span class="s3">0.15</span>),
+              blurRadius: <span class="s3">15</span>,
+              spreadRadius: <span class="s3">1</span>
+          )]
+      ),
+      child: Row(
+        children: &lt;Widget&gt;[
+          Icon(
+            (activeOrNot == <span class="s2">true</span>) ? Icons.play_circle_filled : Icons.play_circle_outline,
+            color: Color(<span class="s3">0xff817dc0</span>),
+            size: <span class="s3">50</span>,
+          ),
+          SizedBox(width: <span class="s3">10</span>,),
+          Text(<span class="s1">'</span>$title<span class="s1">'</span>, style: TextStyle(
+              fontSize: <span class="s3">18</span>,
+              fontWeight: FontWeight.w600
+          ),)
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+<span class="s2">class </span>YogaPage <span class="s2">extends </span>StatefulWidget {
+  @override
+  _YogaPageState createState() =&gt; _YogaPageState();
+}
+
+<span class="s2">class </span>_YogaPageState <span class="s2">extends </span>State&lt;YogaPage&gt; {
+  @override
+  Widget build(BuildContext context) {
+    String selectedImg;
+    String selectTitle;
+    <span class="s2">final </span>Map arguments = ModalRoute.of(context).settings.arguments as Map;
+
+    <span class="s2">return </span>Scaffold(
+      backgroundColor: Color(<span class="s3">0xfff8f8f8</span>),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: <span class="s3">0</span>,
+        leading: IconButton(
+          onPressed: (){Navigator.pop(context);},
+          icon: Icon(Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
+      ),
+      extendBodyBehindAppBar: <span class="s2">true</span>,
+      body: Stack(
+        children: &lt;Widget&gt;[
+          Container(
+            height: MediaQuery.of(context).size.height*<span class="s3">0.43</span>,
+            width: MediaQuery.of(context).size.width,
+            color: Color(<span class="s3">0xffc7b8f5</span>),
+            child: Container(
+              margin: EdgeInsets.only(right: <span class="s3">40</span>, top: <span class="s3">20</span>, bottom: <span class="s3">20</span>),
+              alignment: Alignment.centerLeft,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(<span class="s1">'asset/splash.png'</span>),
+                      fit: BoxFit.contain
+                  )
+              ),
+            ),
+          ),
+          Column(
+            children: &lt;Widget&gt;[
+              SizedBox(height: <span class="s3">90</span>,),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: &lt;Widget&gt;[
+                        Container(
+                          padding: EdgeInsets.only(left: <span class="s3">20</span>, right: <span class="s3">20</span>),
+                          child: Text(<span class="s1">'</span>$selectTitle<span class="s1">'</span>, style: TextStyle(
+                              fontSize: <span class="s3">40</span>,
+                              fontWeight: FontWeight.w700
+                          ),),
+                        ),
+                        SizedBox(height: <span class="s3">10</span>,),
+                        Row(
+                          children: &lt;Widget&gt;[
+                            Container(
+                              padding: EdgeInsets.only(left: <span class="s3">20</span>),
+                              width: MediaQuery.of(context).size.width*<span class="s3">0.7</span>,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: &lt;Widget&gt;[
+                                  Text(<span class="s1">'3-10 Min Course'</span>, style: TextStyle(
+                                      fontSize: <span class="s3">19</span>,
+                                      fontWeight: FontWeight.w600
+                                  ),),
+                                  SizedBox(height: <span class="s3">10</span>,),
+                                  Text(<span class="s1">'Regular yoga practice creates mental clarity and calmness; increases body awareness; relieves chronic stress patterns; relaxes the mind; centers attention; and sharpens concentration.'</span>, style: TextStyle(
+                                      fontSize: <span class="s3">18</span>,
+                                      fontWeight: FontWeight.w600
+                                  ),),
+                                  SizedBox(height: <span class="s3">10</span>,),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width*<span class="s3">0.9</span>,
+                                    margin: EdgeInsets.only(right: <span class="s3">20</span>),
+                                    padding: EdgeInsets.symmetric(vertical: <span class="s3">5</span>, horizontal: <span class="s3">20</span>),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(Radius.circular(<span class="s3">40</span>)),
+
+                                    ),
+                                    child: Row(
+                                      children: &lt;Widget&gt;[
+                                        Icon(Icons.search, size: <span class="s3">30</span>,),
+                                        SizedBox(width: <span class="s3">20</span>,),
+                                        Expanded(
+                                          child: TextField(
+                                            decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                hintText: <span class="s1">'Search'</span>,
+                                                hintStyle: TextStyle(
+                                                  fontSize: <span class="s3">20</span>,
+                                                )
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                padding: EdgeInsets.all(<span class="s3">70</span>),
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(<span class="s1">'asset/</span>$selectedImg<span class="s1">.png'</span>),
+                                        fit: BoxFit.contain
+                                    )
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(height: <span class="s3">5</span>,),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.all(<span class="s3">10</span>),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: &lt;Widget&gt;[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: &lt;Widget&gt;[
+                                  sessionWidget(<span class="s1">'Session 1'</span>, <span class="s2">true</span>),
+                                  sessionWidget(<span class="s1">'Session 2'</span>, <span class="s2">false</span>),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: &lt;Widget&gt;[
+                                  sessionWidget(<span class="s1">'Session 3'</span>, <span class="s2">false</span>),
+                                  sessionWidget(<span class="s1">'Session 4'</span>, <span class="s2">false</span>),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: &lt;Widget&gt;[
+                                  sessionWidget(<span class="s1">'Session 5'</span>, <span class="s2">false</span>),
+                                  sessionWidget(<span class="s1">'Session 6'</span>, <span class="s2">false</span>),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: <span class="s3">20</span>, vertical: <span class="s3">10</span>),
+                          child: Text(<span class="s1">'</span>$selectTitle<span class="s1">'</span>, style: TextStyle(
+                              fontSize: <span class="s3">25</span>,
+                              fontWeight: FontWeight.w700
+                          ),),
+                        ),
+                        SizedBox(height: <span class="s3">10</span>,),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: <span class="s3">20</span>),
+                          padding: EdgeInsets.all(<span class="s3">10</span>),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(<span class="s3">20</span>)),
+                              color: Colors.white,
+                              boxShadow: [BoxShadow(
+                                  color: Colors.black.withOpacity(<span class="s3">0.15</span>),
+                                  blurRadius: <span class="s3">15</span>,
+                                  spreadRadius: <span class="s3">1</span>
+                              )]
+                          ),
+                          child: Row(
+                            children: &lt;Widget&gt;[
+                              Container(
+                                padding: EdgeInsets.all(<span class="s3">50</span>),
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(<span class="s1">'asset/</span>$selectedImg<span class="s1">.png'</span>)
+                                    )
+                                ),
+                              ),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: &lt;Widget&gt;[
+                                    Text(<span class="s1">'Basics 2'</span>, style: TextStyle(
+                                        fontSize: <span class="s3">22</span>,
+                                        fontWeight: FontWeight.w700
+                                    ),),
+                                    Text(<span class="s1">'Start and deepen your patience'</span>, style: TextStyle(
+                                        fontSize: <span class="s3">20</span>,
+                                        fontWeight: FontWeight.w600
+                                    ),)
+                                  ],
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: (){},
+                                icon: Icon(
+                                  Icons.lock_outline,
+                                  size: <span class="s3">30</span>,
+                                  color: Colors.black,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: <span class="s3">30</span>,)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: <span class="s3">10</span>),
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: &lt;Widget&gt;[
+                    Column(
+                      children: &lt;Widget&gt;[
+
+                        Text(<span class="s1">'Today'</span>)
+                      ],
+                    ),
+                    Column(
+                      children: &lt;Widget&gt;[
+
+                        Text(<span class="s1">'All Exercise'</span>, style: TextStyle(
+                            color: Colors.orange,
+                            fontWeight: FontWeight.w700,
+                            fontSize: <span class="s3">20</span>
+                        ),)
+                      ],
+                    ),
+                    Column(
+                      children: &lt;Widget&gt;[
+                        Icon(Icons.settings),
+                        Text(<span class="s1">'Settings'</span>)
+                      ],
+                    ),
+                  ],
+                ),
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+  Container sessionWidget(String title, bool activeOrNot)
+  {
+    <span class="s2">return </span>Container(
+      padding: EdgeInsets.symmetric(horizontal: <span class="s3">20</span>, vertical: <span class="s3">15</span>),
+      margin: EdgeInsets.only(bottom: <span class="s3">10</span>),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(<span class="s3">20</span>)),
+          color: Colors.white,
+          boxShadow: [BoxShadow(
+              color: Colors.black.withOpacity(<span class="s3">0.15</span>),
+              blurRadius: <span class="s3">15</span>,
+              spreadRadius: <span class="s3">1</span>
+          )]
+      ),
+      child: Row(
+        children: &lt;Widget&gt;[
+          Icon(
+            (activeOrNot == <span class="s2">true</span>) ? Icons.play_circle_filled : Icons.play_circle_outline,
+            color: Color(<span class="s3">0xff817dc0</span>),
+            size: <span class="s3">50</span>,
+          ),
+          SizedBox(width: <span class="s3">10</span>,),
+          Text(<span class="s1">'</span>$title<span class="s1">'</span>, style: TextStyle(
+              fontSize: <span class="s3">18</span>,
+              fontWeight: FontWeight.w600
+          ),)
+        ],
+      ),
+    );
+  }
+}
+
+
+
+<span class="s2">class </span>SportPage <span class="s2">extends </span>StatefulWidget {
+  @override
+  _SportPageState createState() =&gt; _SportPageState();
+}
+
+<span class="s2">class </span>_SportPageState <span class="s2">extends </span>State&lt;SportPage&gt; {
+  @override
+  Widget build(BuildContext context) {
+    String selectedImg;
+    String selectTitle;
+    <span class="s2">final </span>Map arguments = ModalRoute.of(context).settings.arguments as Map;
+
+    <span class="s2">return </span>Scaffold(
+      backgroundColor: Color(<span class="s3">0xfff8f8f8</span>),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: <span class="s3">0</span>,
+        leading: IconButton(
+          onPressed: (){Navigator.pop(context);},
+          icon: Icon(Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
+      ),
+      extendBodyBehindAppBar: <span class="s2">true</span>,
+      body: Stack(
+        children: &lt;Widget&gt;[
+          Container(
+            height: MediaQuery.of(context).size.height*<span class="s3">0.43</span>,
+            width: MediaQuery.of(context).size.width,
+            color: Color(<span class="s3">0xffc7b8f5</span>),
+            child: Container(
+              margin: EdgeInsets.only(right: <span class="s3">40</span>, top: <span class="s3">20</span>, bottom: <span class="s3">20</span>),
+              alignment: Alignment.centerLeft,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(<span class="s1">'asset/splash.png'</span>),
+                      fit: BoxFit.contain
+                  )
+              ),
+            ),
+          ),
+          Column(
+            children: &lt;Widget&gt;[
+              SizedBox(height: <span class="s3">90</span>,),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: &lt;Widget&gt;[
+                        Container(
+                          padding: EdgeInsets.only(left: <span class="s3">20</span>, right: <span class="s3">20</span>),
+                          child: Text(<span class="s1">'</span>$selectTitle<span class="s1">'</span>, style: TextStyle(
+                              fontSize: <span class="s3">40</span>,
+                              fontWeight: FontWeight.w700
+                          ),),
+                        ),
+                        SizedBox(height: <span class="s3">10</span>,),
+                        Row(
+                          children: &lt;Widget&gt;[
+                            Container(
+                              padding: EdgeInsets.only(left: <span class="s3">20</span>),
+                              width: MediaQuery.of(context).size.width*<span class="s3">0.7</span>,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: &lt;Widget&gt;[
+                                  Text(<span class="s1">'3-10 Min Course'</span>, style: TextStyle(
+                                      fontSize: <span class="s3">19</span>,
+                                      fontWeight: FontWeight.w600
+                                  ),),
+                                  SizedBox(height: <span class="s3">10</span>,),
+                                  Text(<span class="s1">'Remember that any exercise is better than no exercise.'</span>, style: TextStyle(
+                                      fontSize: <span class="s3">18</span>,
+                                      fontWeight: FontWeight.w600
+                                  ),),
+                                  SizedBox(height: <span class="s3">10</span>,),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width*<span class="s3">0.9</span>,
+                                    margin: EdgeInsets.only(right: <span class="s3">20</span>),
+                                    padding: EdgeInsets.symmetric(vertical: <span class="s3">5</span>, horizontal: <span class="s3">20</span>),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(Radius.circular(<span class="s3">40</span>)),
+
+                                    ),
+                                    child: Row(
+                                      children: &lt;Widget&gt;[
+                                        Icon(Icons.search, size: <span class="s3">30</span>,),
+                                        SizedBox(width: <span class="s3">20</span>,),
+                                        Expanded(
+                                          child: TextField(
+                                            decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                hintText: <span class="s1">'Search'</span>,
+                                                hintStyle: TextStyle(
+                                                  fontSize: <span class="s3">20</span>,
+                                                )
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                padding: EdgeInsets.all(<span class="s3">70</span>),
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(<span class="s1">'asset/</span>$selectedImg<span class="s1">.png'</span>),
+                                        fit: BoxFit.contain
+                                    )
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(height: <span class="s3">5</span>,),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.all(<span class="s3">10</span>),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: &lt;Widget&gt;[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: &lt;Widget&gt;[
+                                  sessionWidget(<span class="s1">'Session 1'</span>, <span class="s2">true</span>),
+                                  sessionWidget(<span class="s1">'Session 2'</span>, <span class="s2">false</span>),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: &lt;Widget&gt;[
+                                  sessionWidget(<span class="s1">'Session 3'</span>, <span class="s2">false</span>),
+                                  sessionWidget(<span class="s1">'Session 4'</span>, <span class="s2">false</span>),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: &lt;Widget&gt;[
+                                  sessionWidget(<span class="s1">'Session 5'</span>, <span class="s2">false</span>),
+                                  sessionWidget(<span class="s1">'Session 6'</span>, <span class="s2">false</span>),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: <span class="s3">20</span>, vertical: <span class="s3">10</span>),
+                          child: Text(<span class="s1">'</span>$selectTitle<span class="s1">'</span>, style: TextStyle(
+                              fontSize: <span class="s3">25</span>,
+                              fontWeight: FontWeight.w700
+                          ),),
+                        ),
+                        SizedBox(height: <span class="s3">10</span>,),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: <span class="s3">20</span>),
+                          padding: EdgeInsets.all(<span class="s3">10</span>),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(<span class="s3">20</span>)),
+                              color: Colors.white,
+                              boxShadow: [BoxShadow(
+                                  color: Colors.black.withOpacity(<span class="s3">0.15</span>),
+                                  blurRadius: <span class="s3">15</span>,
+                                  spreadRadius: <span class="s3">1</span>
+                              )]
+                          ),
+                          child: Row(
+                            children: &lt;Widget&gt;[
+                              Container(
+                                padding: EdgeInsets.all(<span class="s3">50</span>),
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(<span class="s1">'asset/</span>$selectedImg<span class="s1">.png'</span>)
+                                    )
+                                ),
+                              ),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: &lt;Widget&gt;[
+                                    Text(<span class="s1">'Basics 2'</span>, style: TextStyle(
+                                        fontSize: <span class="s3">22</span>,
+                                        fontWeight: FontWeight.w700
+                                    ),),
+                                    Text(<span class="s1">'Start and deepen your patience'</span>, style: TextStyle(
+                                        fontSize: <span class="s3">20</span>,
+                                        fontWeight: FontWeight.w600
+                                    ),)
+                                  ],
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: (){},
+                                icon: Icon(
+                                  Icons.lock_outline,
+                                  size: <span class="s3">30</span>,
+                                  color: Colors.black,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: <span class="s3">30</span>,)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: <span class="s3">10</span>),
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: &lt;Widget&gt;[
+                    Column(
+                      children: &lt;Widget&gt;[
+
+                        Text(<span class="s1">'Today'</span>)
+                      ],
+                    ),
+                    Column(
+                      children: &lt;Widget&gt;[
+
+                        Text(<span class="s1">'All Exercise'</span>, style: TextStyle(
+                            color: Colors.orange,
+                            fontWeight: FontWeight.w700,
+                            fontSize: <span class="s3">20</span>
+                        ),)
+                      ],
+                    ),
+                    Column(
+                      children: &lt;Widget&gt;[
+                        Icon(Icons.settings),
+                        Text(<span class="s1">'Settings'</span>)
+                      ],
+                    ),
+                  ],
+                ),
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+  Container sessionWidget(String title, bool activeOrNot)
+  {
+    <span class="s2">return </span>Container(
+      padding: EdgeInsets.symmetric(horizontal: <span class="s3">20</span>, vertical: <span class="s3">15</span>),
+      margin: EdgeInsets.only(bottom: <span class="s3">10</span>),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(<span class="s3">20</span>)),
+          color: Colors.white,
+          boxShadow: [BoxShadow(
+              color: Colors.black.withOpacity(<span class="s3">0.15</span>),
+              blurRadius: <span class="s3">15</span>,
+              spreadRadius: <span class="s3">1</span>
+          )]
+      ),
+      child: Row(
+        children: &lt;Widget&gt;[
+          Icon(
+            (activeOrNot == <span class="s2">true</span>) ? Icons.play_circle_filled : Icons.play_circle_outline,
+            color: Color(<span class="s3">0xff817dc0</span>),
+            size: <span class="s3">50</span>,
+          ),
+          SizedBox(width: <span class="s3">10</span>,),
+          Text(<span class="s1">'</span>$title<span class="s1">'</span>, style: TextStyle(
+              fontSize: <span class="s3">18</span>,
+              fontWeight: FontWeight.w600
+          ),)
+        ],
+      ),
+    );
+  }
+}</pre>
+</body>
+</html>
