@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 void main(){
   runApp(MyApp());
 }
@@ -8,7 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          fontFamily: 'Lato'
+        fontFamily: 'Lato'
       ),
       home: MyHomePage(),
       routes: {
@@ -60,31 +61,31 @@ class _MyHomePageState extends State<MyHomePage> {
                 alignment: Alignment.centerLeft,
                 padding: EdgeInsets.all(20),
                 child: Text("Welcome to \nHealthiApp", style: TextStyle(
-
-                    fontSize: 40,
-                    fontWeight: FontWeight.w700
+                  
+                  fontSize: 40,
+                  fontWeight: FontWeight.w700
                 ),),
               ),
               Container(
                 width: MediaQuery.of(context).size.width*0.9,
                 padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(40))
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(40))
                 ),
                 child: Row(
                   children: <Widget>[
                     Icon(Icons.search,
-                      size: 30,),
+                    size: 30,),
                     SizedBox(width: 20,),
                     Expanded(
                       child: TextField(
                         decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Search',
-                            hintStyle: TextStyle(
-                                fontSize: 20
-                            )
+                          border: InputBorder.none,
+                          hintText: 'Search',
+                          hintStyle: TextStyle(
+                            fontSize: 20
+                          )
                         ),
                       ),
                     )
@@ -113,17 +114,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     Column(
                       children: <Widget>[
-
+                       
                         Text('Today')
                       ],
                     ),
                     Column(
                       children: <Widget>[
-
+                       
                         Text('Health and Wellness Tasks', style: TextStyle(
-                            color: Colors.blue[900],
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20
+                          color: Colors.blue[900],
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20
                         ),)
                       ],
                     ),
@@ -148,92 +149,92 @@ class _MyHomePageState extends State<MyHomePage> {
       margin: EdgeInsets.only(left: 10, right: 10, bottom: 20),
       width: MediaQuery.of(context).size.width*0.3,
       decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(30)),
-          boxShadow: [BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 20,
-            spreadRadius: 1,
-            offset: Offset(0,10),
-          )]
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(30)),
+        boxShadow: [BoxShadow(
+          color: Colors.black.withOpacity(0.1),
+          blurRadius: 20,
+          spreadRadius: 1,
+          offset: Offset(0,10),
+        )]
       ),
       child: InkWell(
-        onTap: (){openSleepPage('sleep', 'Sleep');},
-
-        child: InkWell(
-          onTap: (){openFoodPage('food', 'Eating Habbits');},
-
-          child: InkWell(
-            onTap: (){openWaterPage('water', 'Water');},
-
-            child: InkWell(
-              onTap: (){openMusicPage('music', 'Music');},
-
-              child: InkWell(
-                onTap: (){openYogaPage('yoga', 'Yoga');},
-
-                child: InkWell(
-                  onTap: (){openSportPage('sport', 'Exercise');},
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(height: 20,),
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage('asset/$img.png'),
-                                  fit: BoxFit.contain
-                              )
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20,),
-                      Container(
-                        padding: EdgeInsets.all(20),
-                        child: Text('$title', style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                        ),textAlign: TextAlign.center,
-                        ),
-                      ),
-                      SizedBox(height: 10,)
-                    ],
-                  ),
+       onTap: (){openSleepPage('sleep', 'Sleep');},
+      
+       child: InkWell(
+       onTap: (){openFoodPage('food', 'Eating Habbits');},
+       
+       child: InkWell(
+       onTap: (){openWaterPage('water', 'Water');},
+       
+       child: InkWell(
+       onTap: (){openMusicPage('music', 'Music');},
+         
+       child: InkWell(
+       onTap: (){openYogaPage('yoga', 'Yoga');},
+         
+       child: InkWell(
+       onTap: (){openSportPage('sport', 'Exercise');},
+        child: Column(
+          children: <Widget>[
+            SizedBox(height: 20,),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('asset/$img.png'),
+                    fit: BoxFit.contain
+                  )
                 ),
-              ),),),),),
+              ),
+            ),
+            SizedBox(height: 20,),
+            Container(
+              padding: EdgeInsets.all(20),
+              child: Text('$title', style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+              ),textAlign: TextAlign.center,
+              ),
+            ),
+            SizedBox(height: 10,)
+          ],
+        ),
+      ),
+         ),),),),),
     );
-
+        
   }
   void openSleepPage(String img, String title)
   {
     Navigator.pushNamed(context, '/SleepPage', arguments: {'image':'sleep', 'title':'Sleep'});
   }
-
-  void openFoodPage(String img, String title)
+  
+         void openFoodPage(String img, String title)
   {
     Navigator.pushNamed(context, '/FoodPage', arguments: {'image':'food', 'title':'Eating Habbits'});
   }
-
-  void openWaterPage(String img, String title)
+    
+    void openWaterPage(String img, String title)
   {
     Navigator.pushNamed(context, '/WaterPage', arguments: {'image':'water', 'title':'Water'});
   }
-
-  void openMusicPage(String img, String title)
+    
+    void openMusicPage(String img, String title)
   {
     Navigator.pushNamed(context, '/MusicPage', arguments: {'image':'music', 'title':'Music'});
   }
-
-  void openYogaPage(String img, String title)
+    
+    void openYogaPage(String img, String title)
   {
     Navigator.pushNamed(context, '/YogaPage', arguments: {'image':'yoga', 'title':'Yoga'});
   }
-
-  void openSportPage(String img, String title)
+    
+    void openSportPage(String img, String title)
   {
     Navigator.pushNamed(context, '/SportPage', arguments: {'image':'sport', 'title':'Exercise'});
   }
-}
+  }
 
 
 
@@ -249,7 +250,7 @@ class _SleepPageState extends State<SleepPage> {
     String selectedImg;
     String selectTitle;
     final Map arguments = ModalRoute.of(context).settings.arguments as Map;
-
+    
     return Scaffold(
       backgroundColor: Color(0xfff8f8f8),
       appBar: AppBar(
@@ -258,7 +259,7 @@ class _SleepPageState extends State<SleepPage> {
         leading: IconButton(
           onPressed: (){Navigator.pop(context);},
           icon: Icon(Icons.arrow_back_ios,
-            color: Colors.black,
+          color: Colors.black,
           ),
         ),
       ),
@@ -273,10 +274,10 @@ class _SleepPageState extends State<SleepPage> {
               margin: EdgeInsets.only(right: 40, top: 20, bottom: 20),
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('asset/splash.png'),
-                      fit: BoxFit.contain
-                  )
+                image: DecorationImage(
+                  image: AssetImage('asset/splash.png'),
+                  fit: BoxFit.contain
+                )
               ),
             ),
           ),
@@ -292,8 +293,8 @@ class _SleepPageState extends State<SleepPage> {
                         Container(
                           padding: EdgeInsets.only(left: 20, right: 20),
                           child: Text('$selectTitle', style: TextStyle(
-                              fontSize: 40,
-                              fontWeight: FontWeight.w700
+                            fontSize: 40,
+                            fontWeight: FontWeight.w700
                           ),),
                         ),
                         SizedBox(height: 10,),
@@ -305,14 +306,14 @@ class _SleepPageState extends State<SleepPage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text('3-10 Min Course', style: TextStyle(
-                                      fontSize: 19,
-                                      fontWeight: FontWeight.w600
+                                  Text('Sleeping well means getting enough sleep.', style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600
                                   ),),
                                   SizedBox(height: 10,),
                                   Text('Nothing is better than a good night sleep.', style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600
                                   ),),
                                   SizedBox(height: 10,),
                                   Container(
@@ -331,11 +332,11 @@ class _SleepPageState extends State<SleepPage> {
                                         Expanded(
                                           child: TextField(
                                             decoration: InputDecoration(
-                                                border: InputBorder.none,
-                                                hintText: 'Search',
-                                                hintStyle: TextStyle(
-                                                  fontSize: 20,
-                                                )
+                                              border: InputBorder.none,
+                                              hintText: 'Search',
+                                              hintStyle: TextStyle(
+                                                fontSize: 20,
+                                              )
                                             ),
                                           ),
                                         )
@@ -349,10 +350,10 @@ class _SleepPageState extends State<SleepPage> {
                               child: Container(
                                 padding: EdgeInsets.all(70),
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage('asset/$selectedImg.png'),
-                                        fit: BoxFit.contain
-                                    )
+                                  image: DecorationImage(
+                                    image: AssetImage('asset/$selectedImg.png'),
+                                    fit: BoxFit.contain
+                                  )
                                 ),
                               ),
                             )
@@ -369,22 +370,16 @@ class _SleepPageState extends State<SleepPage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  sessionWidget('Session 1', true),
-                                  sessionWidget('Session 2', false),
+                                  sessionWidget('Stage 1 of Sleep', true),
+                                  sessionWidget('Stage 2 of Sleep', false),
                                 ],
                               ),
+                           
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  sessionWidget('Session 3', false),
-                                  sessionWidget('Session 4', false),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  sessionWidget('Session 5', false),
-                                  sessionWidget('Session 6', false),
+                                  sessionWidget('Session 3 of Sleep', false),
+                                  sessionWidget('Session 4 of Sleep', false),
                                 ],
                               )
                             ],
@@ -392,9 +387,9 @@ class _SleepPageState extends State<SleepPage> {
                         ),
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                          child: Text('$selectTitle', style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w700
+                          child: Text('Surprise Video', style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.w700
                           ),),
                         ),
                         SizedBox(height: 10,),
@@ -402,35 +397,35 @@ class _SleepPageState extends State<SleepPage> {
                           margin: EdgeInsets.symmetric(horizontal: 20),
                           padding: EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
-                              color: Colors.white,
-                              boxShadow: [BoxShadow(
-                                  color: Colors.black.withOpacity(0.15),
-                                  blurRadius: 15,
-                                  spreadRadius: 1
-                              )]
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            color: Colors.white,
+                            boxShadow: [BoxShadow(
+                              color: Colors.black.withOpacity(0.15),
+                              blurRadius: 15,
+                              spreadRadius: 1
+                            )]
                           ),
                           child: Row(
                             children: <Widget>[
                               Container(
                                 padding: EdgeInsets.all(50),
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage('asset/$selectedImg.png')
-                                    )
+                                  image: DecorationImage(
+                                    image: AssetImage('asset/$selectedImg.png')
+                                  )
                                 ),
                               ),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text('Basics 2', style: TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w700
+                                    Text('15 mins', style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w700
                                     ),),
-                                    Text('Start and deepen your patience', style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600
+                                    Text('This video will guide you about the significance of a well sleep.', style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600
                                     ),)
                                   ],
                                 ),
@@ -460,15 +455,15 @@ class _SleepPageState extends State<SleepPage> {
                   children: <Widget>[
                     Column(
                       children: <Widget>[
-
+                        
                         Text('Today')
                       ],
                     ),
                     Column(
                       children: <Widget>[
-
-                        Text('All Exercise', style: TextStyle(
-                            color: Colors.orange,
+                        
+                        Text('Health and Welness Tasks', style: TextStyle(
+                            color: Colors.blue[900],
                             fontWeight: FontWeight.w700,
                             fontSize: 20
                         ),)
@@ -495,36 +490,36 @@ class _SleepPageState extends State<SleepPage> {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-          color: Colors.white,
-          boxShadow: [BoxShadow(
-              color: Colors.black.withOpacity(0.15),
-              blurRadius: 15,
-              spreadRadius: 1
-          )]
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        color: Colors.white,
+        boxShadow: [BoxShadow(
+          color: Colors.black.withOpacity(0.15),
+          blurRadius: 15,
+          spreadRadius: 1
+        )]
       ),
       child: Row(
         children: <Widget>[
           Icon(
-            (activeOrNot == true) ? Icons.play_circle_filled : Icons.play_circle_outline,
+              (activeOrNot == true) ? Icons.play_circle_filled : Icons.play_circle_outline,
             color: Color(0xff817dc0),
             size: 50,
           ),
           SizedBox(width: 10,),
           Text('$title', style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600
+            fontSize: 18,
+            fontWeight: FontWeight.w600
           ),)
         ],
       ),
     );
   }
 }
-
-
-
-
-class FoodPage extends StatefulWidget {
+         
+         
+         
+         
+         class FoodPage extends StatefulWidget {
   @override
   _FoodPageState createState() => _FoodPageState();
 }
@@ -535,7 +530,7 @@ class _FoodPageState extends State<FoodPage> {
     String selectedImg;
     String selectTitle;
     final Map arguments = ModalRoute.of(context).settings.arguments as Map;
-
+    
     return Scaffold(
       backgroundColor: Color(0xfff8f8f8),
       appBar: AppBar(
@@ -544,7 +539,7 @@ class _FoodPageState extends State<FoodPage> {
         leading: IconButton(
           onPressed: (){Navigator.pop(context);},
           icon: Icon(Icons.arrow_back_ios,
-            color: Colors.black,
+          color: Colors.black,
           ),
         ),
       ),
@@ -559,10 +554,10 @@ class _FoodPageState extends State<FoodPage> {
               margin: EdgeInsets.only(right: 40, top: 20, bottom: 20),
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('asset/splash.png'),
-                      fit: BoxFit.contain
-                  )
+                image: DecorationImage(
+                  image: AssetImage('asset/splash.png'),
+                  fit: BoxFit.contain
+                )
               ),
             ),
           ),
@@ -577,9 +572,9 @@ class _FoodPageState extends State<FoodPage> {
                       children: <Widget>[
                         Container(
                           padding: EdgeInsets.only(left: 20, right: 20),
-                          child: Text('$selectTitle', style: TextStyle(
-                              fontSize: 40,
-                              fontWeight: FontWeight.w700
+                          child: Text('Healthy Diet', style: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.w700
                           ),),
                         ),
                         SizedBox(height: 10,),
@@ -591,14 +586,14 @@ class _FoodPageState extends State<FoodPage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text('3-10 Min Course', style: TextStyle(
-                                      fontSize: 19,
-                                      fontWeight: FontWeight.w600
+                                  Text('Healthy eating means eating a variety of foods that give you the nutrients you need to maintain your health, feel good, and have energy.', style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600
                                   ),),
                                   SizedBox(height: 10,),
                                   Text('Eating healthy food fills your body with energy and nutrients. Imagine your cells smiling back at you and saying: Thank you!', style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600
                                   ),),
                                   SizedBox(height: 10,),
                                   Container(
@@ -617,11 +612,11 @@ class _FoodPageState extends State<FoodPage> {
                                         Expanded(
                                           child: TextField(
                                             decoration: InputDecoration(
-                                                border: InputBorder.none,
-                                                hintText: 'Search',
-                                                hintStyle: TextStyle(
-                                                  fontSize: 20,
-                                                )
+                                              border: InputBorder.none,
+                                              hintText: 'Search',
+                                              hintStyle: TextStyle(
+                                                fontSize: 20,
+                                              )
                                             ),
                                           ),
                                         )
@@ -635,10 +630,10 @@ class _FoodPageState extends State<FoodPage> {
                               child: Container(
                                 padding: EdgeInsets.all(70),
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage('asset/$selectedImg.png'),
-                                        fit: BoxFit.contain
-                                    )
+                                  image: DecorationImage(
+                                    image: AssetImage('asset/$selectedImg.png'),
+                                    fit: BoxFit.contain
+                                  )
                                 ),
                               ),
                             )
@@ -655,22 +650,22 @@ class _FoodPageState extends State<FoodPage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  sessionWidget('Session 1', true),
-                                  sessionWidget('Session 2', false),
+                                  sessionWidget('Light Breakfast at 09.00 AM', true),
+                                  sessionWidget('Snack at 11.00 AM', false),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  sessionWidget('Session 3', false),
-                                  sessionWidget('Session 4', false),
+                                  sessionWidget('Lunch at 01.00 PM', false),
+                                  sessionWidget('Snack at 03.00 PM', false),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  sessionWidget('Session 5', false),
-                                  sessionWidget('Session 6', false),
+                                  sessionWidget('Dinner at 06.00 PM', false),
+                                  sessionWidget('Snack at 08.00 PM', false),
                                 ],
                               )
                             ],
@@ -678,9 +673,9 @@ class _FoodPageState extends State<FoodPage> {
                         ),
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                          child: Text('$selectTitle', style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w700
+                          child: Text('Surprise Video', style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.w700
                           ),),
                         ),
                         SizedBox(height: 10,),
@@ -688,35 +683,35 @@ class _FoodPageState extends State<FoodPage> {
                           margin: EdgeInsets.symmetric(horizontal: 20),
                           padding: EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
-                              color: Colors.white,
-                              boxShadow: [BoxShadow(
-                                  color: Colors.black.withOpacity(0.15),
-                                  blurRadius: 15,
-                                  spreadRadius: 1
-                              )]
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            color: Colors.white,
+                            boxShadow: [BoxShadow(
+                              color: Colors.black.withOpacity(0.15),
+                              blurRadius: 15,
+                              spreadRadius: 1
+                            )]
                           ),
                           child: Row(
                             children: <Widget>[
                               Container(
                                 padding: EdgeInsets.all(50),
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage('asset/$selectedImg.png')
-                                    )
+                                  image: DecorationImage(
+                                    image: AssetImage('asset/$selectedImg.png')
+                                  )
                                 ),
                               ),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text('Basics 2', style: TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w700
+                                    Text('15 mins', style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w700
                                     ),),
-                                    Text('Start and deepen your patience', style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600
+                                    Text('This video will guide you about the significance of a healthy diet.', style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600
                                     ),)
                                   ],
                                 ),
@@ -746,15 +741,15 @@ class _FoodPageState extends State<FoodPage> {
                   children: <Widget>[
                     Column(
                       children: <Widget>[
-
+                        
                         Text('Today')
                       ],
                     ),
                     Column(
                       children: <Widget>[
-
-                        Text('All Exercise', style: TextStyle(
-                            color: Colors.orange,
+                        
+                        Text('Health and Wellness Tasks', style: TextStyle(
+                            color: Colors.blue[900],
                             fontWeight: FontWeight.w700,
                             fontSize: 20
                         ),)
@@ -781,35 +776,35 @@ class _FoodPageState extends State<FoodPage> {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-          color: Colors.white,
-          boxShadow: [BoxShadow(
-              color: Colors.black.withOpacity(0.15),
-              blurRadius: 15,
-              spreadRadius: 1
-          )]
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        color: Colors.white,
+        boxShadow: [BoxShadow(
+          color: Colors.black.withOpacity(0.15),
+          blurRadius: 15,
+          spreadRadius: 1
+        )]
       ),
       child: Row(
         children: <Widget>[
           Icon(
-            (activeOrNot == true) ? Icons.play_circle_filled : Icons.play_circle_outline,
+              (activeOrNot == true) ? Icons.play_circle_filled : Icons.play_circle_outline,
             color: Color(0xff817dc0),
             size: 50,
           ),
           SizedBox(width: 10,),
           Text('$title', style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600
+            fontSize: 18,
+            fontWeight: FontWeight.w600
           ),)
         ],
       ),
     );
   }
 }
-
-
-
-class WaterPage extends StatefulWidget {
+         
+         
+         
+         class WaterPage extends StatefulWidget {
   @override
   _WaterPageState createState() => _WaterPageState();
 }
@@ -820,7 +815,7 @@ class _WaterPageState extends State<WaterPage> {
     String selectedImg;
     String selectTitle;
     final Map arguments = ModalRoute.of(context).settings.arguments as Map;
-
+    
     return Scaffold(
       backgroundColor: Color(0xfff8f8f8),
       appBar: AppBar(
@@ -829,7 +824,7 @@ class _WaterPageState extends State<WaterPage> {
         leading: IconButton(
           onPressed: (){Navigator.pop(context);},
           icon: Icon(Icons.arrow_back_ios,
-            color: Colors.black,
+          color: Colors.black,
           ),
         ),
       ),
@@ -844,10 +839,10 @@ class _WaterPageState extends State<WaterPage> {
               margin: EdgeInsets.only(right: 40, top: 20, bottom: 20),
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('asset/splash.png'),
-                      fit: BoxFit.contain
-                  )
+                image: DecorationImage(
+                  image: AssetImage('asset/splash.png'),
+                  fit: BoxFit.contain
+                )
               ),
             ),
           ),
@@ -863,8 +858,8 @@ class _WaterPageState extends State<WaterPage> {
                         Container(
                           padding: EdgeInsets.only(left: 20, right: 20),
                           child: Text('$selectTitle', style: TextStyle(
-                              fontSize: 40,
-                              fontWeight: FontWeight.w700
+                            fontSize: 40,
+                            fontWeight: FontWeight.w700
                           ),),
                         ),
                         SizedBox(height: 10,),
@@ -876,14 +871,14 @@ class _WaterPageState extends State<WaterPage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text('3-10 Min Course', style: TextStyle(
-                                      fontSize: 19,
-                                      fontWeight: FontWeight.w600
+                                  Text('Basis of the fluids of living organisms.', style: TextStyle(
+                                    fontSize: 19,
+                                    fontWeight: FontWeight.w600
                                   ),),
                                   SizedBox(height: 10,),
                                   Text('Drink more water. Your skin, your hair, your mind and body will thank you.', style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600
                                   ),),
                                   SizedBox(height: 10,),
                                   Container(
@@ -902,11 +897,11 @@ class _WaterPageState extends State<WaterPage> {
                                         Expanded(
                                           child: TextField(
                                             decoration: InputDecoration(
-                                                border: InputBorder.none,
-                                                hintText: 'Search',
-                                                hintStyle: TextStyle(
-                                                  fontSize: 20,
-                                                )
+                                              border: InputBorder.none,
+                                              hintText: 'Search',
+                                              hintStyle: TextStyle(
+                                                fontSize: 20,
+                                              )
                                             ),
                                           ),
                                         )
@@ -920,10 +915,10 @@ class _WaterPageState extends State<WaterPage> {
                               child: Container(
                                 padding: EdgeInsets.all(70),
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage('asset/$selectedImg.png'),
-                                        fit: BoxFit.contain
-                                    )
+                                  image: DecorationImage(
+                                    image: AssetImage('asset/$selectedImg.png'),
+                                    fit: BoxFit.contain
+                                  )
                                 ),
                               ),
                             )
@@ -940,22 +935,29 @@ class _WaterPageState extends State<WaterPage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  sessionWidget('Session 1', true),
-                                  sessionWidget('Session 2', false),
+                                  sessionWidget('Drink water at 07.00 AM ', true),
+                                  sessionWidget('Drink water at 09.00 AM', false),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  sessionWidget('Session 3', false),
-                                  sessionWidget('Session 4', false),
+                                  sessionWidget('Drink water at 11.00 AM', false),
+                                  sessionWidget('Drink water at 01.00 PM', false),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  sessionWidget('Session 5', false),
-                                  sessionWidget('Session 6', false),
+                                  sessionWidget('Drink water at 03.00 PM', false),
+                                  sessionWidget('Drink water at 05.00 PM', false),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: <Widget>[
+                                  sessionWidget('Drink water at 07.00 PM', false),
+                                  sessionWidget('Drink water at 09.00 PM', false),
                                 ],
                               )
                             ],
@@ -963,9 +965,9 @@ class _WaterPageState extends State<WaterPage> {
                         ),
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                          child: Text('$selectTitle', style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w700
+                          child: Text('Importance of Water', style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.w700
                           ),),
                         ),
                         SizedBox(height: 10,),
@@ -973,35 +975,35 @@ class _WaterPageState extends State<WaterPage> {
                           margin: EdgeInsets.symmetric(horizontal: 20),
                           padding: EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
-                              color: Colors.white,
-                              boxShadow: [BoxShadow(
-                                  color: Colors.black.withOpacity(0.15),
-                                  blurRadius: 15,
-                                  spreadRadius: 1
-                              )]
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            color: Colors.white,
+                            boxShadow: [BoxShadow(
+                              color: Colors.black.withOpacity(0.15),
+                              blurRadius: 15,
+                              spreadRadius: 1
+                            )]
                           ),
                           child: Row(
                             children: <Widget>[
                               Container(
                                 padding: EdgeInsets.all(50),
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage('asset/$selectedImg.png')
-                                    )
+                                  image: DecorationImage(
+                                    image: AssetImage('asset/$selectedImg.png')
+                                  )
                                 ),
                               ),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text('Basics 2', style: TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w700
+                                    Text('15 mins', style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w700
                                     ),),
-                                    Text('Start and deepen your patience', style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600
+                                    Text('This video will guide you about the significance of water.', style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600
                                     ),)
                                   ],
                                 ),
@@ -1031,15 +1033,15 @@ class _WaterPageState extends State<WaterPage> {
                   children: <Widget>[
                     Column(
                       children: <Widget>[
-
+                        
                         Text('Today')
                       ],
                     ),
                     Column(
                       children: <Widget>[
-
-                        Text('All Exercise', style: TextStyle(
-                            color: Colors.orange,
+                        
+                        Text('Health and Welness Tasks', style: TextStyle(
+                            color: Colors.blue[900],
                             fontWeight: FontWeight.w700,
                             fontSize: 20
                         ),)
@@ -1066,35 +1068,35 @@ class _WaterPageState extends State<WaterPage> {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-          color: Colors.white,
-          boxShadow: [BoxShadow(
-              color: Colors.black.withOpacity(0.15),
-              blurRadius: 15,
-              spreadRadius: 1
-          )]
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        color: Colors.white,
+        boxShadow: [BoxShadow(
+          color: Colors.black.withOpacity(0.15),
+          blurRadius: 15,
+          spreadRadius: 1
+        )]
       ),
       child: Row(
         children: <Widget>[
           Icon(
-            (activeOrNot == true) ? Icons.play_circle_filled : Icons.play_circle_outline,
+              (activeOrNot == true) ? Icons.play_circle_filled : Icons.play_circle_outline,
             color: Color(0xff817dc0),
             size: 50,
           ),
           SizedBox(width: 10,),
           Text('$title', style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600
+            fontSize: 18,
+            fontWeight: FontWeight.w600
           ),)
         ],
       ),
     );
   }
 }
-
-
-
-class MusicPage extends StatefulWidget {
+         
+         
+         
+         class MusicPage extends StatefulWidget {
   @override
   _MusicPageState createState() => _MusicPageState();
 }
@@ -1105,7 +1107,7 @@ class _MusicPageState extends State<MusicPage> {
     String selectedImg;
     String selectTitle;
     final Map arguments = ModalRoute.of(context).settings.arguments as Map;
-
+    
     return Scaffold(
       backgroundColor: Color(0xfff8f8f8),
       appBar: AppBar(
@@ -1114,7 +1116,7 @@ class _MusicPageState extends State<MusicPage> {
         leading: IconButton(
           onPressed: (){Navigator.pop(context);},
           icon: Icon(Icons.arrow_back_ios,
-            color: Colors.black,
+          color: Colors.black,
           ),
         ),
       ),
@@ -1129,10 +1131,10 @@ class _MusicPageState extends State<MusicPage> {
               margin: EdgeInsets.only(right: 40, top: 20, bottom: 20),
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('asset/splash.png'),
-                      fit: BoxFit.contain
-                  )
+                image: DecorationImage(
+                  image: AssetImage('asset/splash.png'),
+                  fit: BoxFit.contain
+                )
               ),
             ),
           ),
@@ -1148,8 +1150,8 @@ class _MusicPageState extends State<MusicPage> {
                         Container(
                           padding: EdgeInsets.only(left: 20, right: 20),
                           child: Text('$selectTitle', style: TextStyle(
-                              fontSize: 40,
-                              fontWeight: FontWeight.w700
+                            fontSize: 40,
+                            fontWeight: FontWeight.w700
                           ),),
                         ),
                         SizedBox(height: 10,),
@@ -1161,14 +1163,14 @@ class _MusicPageState extends State<MusicPage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text('3-10 Min Course', style: TextStyle(
-                                      fontSize: 19,
-                                      fontWeight: FontWeight.w600
+                                  Text('Beauty of form, harmony, and expression of emotion.', style: TextStyle(
+                                    fontSize: 19,
+                                    fontWeight: FontWeight.w600
                                   ),),
                                   SizedBox(height: 10,),
                                   Text('Music can enhance the function of neural networks, slow the heart rate, lower blood pressure, reduce levels of stress hormones.', style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600
                                   ),),
                                   SizedBox(height: 10,),
                                   Container(
@@ -1187,11 +1189,11 @@ class _MusicPageState extends State<MusicPage> {
                                         Expanded(
                                           child: TextField(
                                             decoration: InputDecoration(
-                                                border: InputBorder.none,
-                                                hintText: 'Search',
-                                                hintStyle: TextStyle(
-                                                  fontSize: 20,
-                                                )
+                                              border: InputBorder.none,
+                                              hintText: 'Search',
+                                              hintStyle: TextStyle(
+                                                fontSize: 20,
+                                              )
                                             ),
                                           ),
                                         )
@@ -1205,10 +1207,10 @@ class _MusicPageState extends State<MusicPage> {
                               child: Container(
                                 padding: EdgeInsets.all(70),
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage('asset/$selectedImg.png'),
-                                        fit: BoxFit.contain
-                                    )
+                                  image: DecorationImage(
+                                    image: AssetImage('asset/$selectedImg.png'),
+                                    fit: BoxFit.contain
+                                  )
                                 ),
                               ),
                             )
@@ -1225,22 +1227,22 @@ class _MusicPageState extends State<MusicPage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  sessionWidget('Session 1', true),
-                                  sessionWidget('Session 2', false),
+                                  sessionWidget('Classical Music', true),
+                                  sessionWidget('Jazz Music', false),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  sessionWidget('Session 3', false),
-                                  sessionWidget('Session 4', false),
+                                  sessionWidget('Pop Music', false),
+                                  sessionWidget('Country Music', false),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  sessionWidget('Session 5', false),
-                                  sessionWidget('Session 6', false),
+                                  sessionWidget('Indie Music', false),
+                                  sessionWidget('Alternative Pop', false),
                                 ],
                               )
                             ],
@@ -1248,9 +1250,9 @@ class _MusicPageState extends State<MusicPage> {
                         ),
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                          child: Text('$selectTitle', style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w700
+                          child: Text('Surprise Music', style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.w700
                           ),),
                         ),
                         SizedBox(height: 10,),
@@ -1258,35 +1260,35 @@ class _MusicPageState extends State<MusicPage> {
                           margin: EdgeInsets.symmetric(horizontal: 20),
                           padding: EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
-                              color: Colors.white,
-                              boxShadow: [BoxShadow(
-                                  color: Colors.black.withOpacity(0.15),
-                                  blurRadius: 15,
-                                  spreadRadius: 1
-                              )]
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            color: Colors.white,
+                            boxShadow: [BoxShadow(
+                              color: Colors.black.withOpacity(0.15),
+                              blurRadius: 15,
+                              spreadRadius: 1
+                            )]
                           ),
                           child: Row(
                             children: <Widget>[
                               Container(
                                 padding: EdgeInsets.all(50),
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage('asset/$selectedImg.png')
-                                    )
+                                  image: DecorationImage(
+                                    image: AssetImage('asset/$selectedImg.png')
+                                  )
                                 ),
                               ),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text('Basics 2', style: TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w700
+                                    Text('15 mins', style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w700
                                     ),),
-                                    Text('Start and deepen your patience', style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600
+                                    Text('Harmony of music genres will enhance your mood and brighten your moment.', style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600
                                     ),)
                                   ],
                                 ),
@@ -1316,13 +1318,13 @@ class _MusicPageState extends State<MusicPage> {
                   children: <Widget>[
                     Column(
                       children: <Widget>[
-
+                        
                         Text('Today')
                       ],
                     ),
                     Column(
                       children: <Widget>[
-
+                        
                         Text('All Exercise', style: TextStyle(
                             color: Colors.orange,
                             fontWeight: FontWeight.w700,
@@ -1351,36 +1353,36 @@ class _MusicPageState extends State<MusicPage> {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-          color: Colors.white,
-          boxShadow: [BoxShadow(
-              color: Colors.black.withOpacity(0.15),
-              blurRadius: 15,
-              spreadRadius: 1
-          )]
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        color: Colors.white,
+        boxShadow: [BoxShadow(
+          color: Colors.black.withOpacity(0.15),
+          blurRadius: 15,
+          spreadRadius: 1
+        )]
       ),
       child: Row(
         children: <Widget>[
           Icon(
-            (activeOrNot == true) ? Icons.play_circle_filled : Icons.play_circle_outline,
+              (activeOrNot == true) ? Icons.play_circle_filled : Icons.play_circle_outline,
             color: Color(0xff817dc0),
             size: 50,
           ),
           SizedBox(width: 10,),
           Text('$title', style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600
+            fontSize: 18,
+            fontWeight: FontWeight.w600
           ),)
         ],
       ),
     );
   }
 }
-
-
-
-
-class YogaPage extends StatefulWidget {
+         
+         
+         
+         
+         class YogaPage extends StatefulWidget {
   @override
   _YogaPageState createState() => _YogaPageState();
 }
@@ -1391,7 +1393,7 @@ class _YogaPageState extends State<YogaPage> {
     String selectedImg;
     String selectTitle;
     final Map arguments = ModalRoute.of(context).settings.arguments as Map;
-
+    
     return Scaffold(
       backgroundColor: Color(0xfff8f8f8),
       appBar: AppBar(
@@ -1400,7 +1402,7 @@ class _YogaPageState extends State<YogaPage> {
         leading: IconButton(
           onPressed: (){Navigator.pop(context);},
           icon: Icon(Icons.arrow_back_ios,
-            color: Colors.black,
+          color: Colors.black,
           ),
         ),
       ),
@@ -1415,10 +1417,10 @@ class _YogaPageState extends State<YogaPage> {
               margin: EdgeInsets.only(right: 40, top: 20, bottom: 20),
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('asset/splash.png'),
-                      fit: BoxFit.contain
-                  )
+                image: DecorationImage(
+                  image: AssetImage('asset/splash.png'),
+                  fit: BoxFit.contain
+                )
               ),
             ),
           ),
@@ -1434,8 +1436,8 @@ class _YogaPageState extends State<YogaPage> {
                         Container(
                           padding: EdgeInsets.only(left: 20, right: 20),
                           child: Text('$selectTitle', style: TextStyle(
-                              fontSize: 40,
-                              fontWeight: FontWeight.w700
+                            fontSize: 40,
+                            fontWeight: FontWeight.w700
                           ),),
                         ),
                         SizedBox(height: 10,),
@@ -1447,14 +1449,14 @@ class _YogaPageState extends State<YogaPage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text('3-10 Min Course', style: TextStyle(
-                                      fontSize: 19,
-                                      fontWeight: FontWeight.w600
+                                  Text('Yoga is a group of physical, mental, and spiritual practices or disciplines which originated in ancient India.', style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600
                                   ),),
                                   SizedBox(height: 10,),
                                   Text('Regular yoga practice creates mental clarity and calmness; increases body awareness; relieves chronic stress patterns; relaxes the mind; centers attention; and sharpens concentration.', style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600
                                   ),),
                                   SizedBox(height: 10,),
                                   Container(
@@ -1473,11 +1475,11 @@ class _YogaPageState extends State<YogaPage> {
                                         Expanded(
                                           child: TextField(
                                             decoration: InputDecoration(
-                                                border: InputBorder.none,
-                                                hintText: 'Search',
-                                                hintStyle: TextStyle(
-                                                  fontSize: 20,
-                                                )
+                                              border: InputBorder.none,
+                                              hintText: 'Search',
+                                              hintStyle: TextStyle(
+                                                fontSize: 20,
+                                              )
                                             ),
                                           ),
                                         )
@@ -1491,10 +1493,10 @@ class _YogaPageState extends State<YogaPage> {
                               child: Container(
                                 padding: EdgeInsets.all(70),
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage('asset/$selectedImg.png'),
-                                        fit: BoxFit.contain
-                                    )
+                                  image: DecorationImage(
+                                    image: AssetImage('asset/$selectedImg.png'),
+                                    fit: BoxFit.contain
+                                  )
                                 ),
                               ),
                             )
@@ -1511,22 +1513,22 @@ class _YogaPageState extends State<YogaPage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  sessionWidget('Session 1', true),
-                                  sessionWidget('Session 2', false),
+                                  sessionWidget('Hatha Yoga', true),
+                                  sessionWidget('Iyengar Yoga', false),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  sessionWidget('Session 3', false),
-                                  sessionWidget('Session 4', false),
+                                  sessionWidget('Bikram Yoga', false),
+                                  sessionWidget('Vinyasa Yoga', false),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  sessionWidget('Session 5', false),
-                                  sessionWidget('Session 6', false),
+                                  sessionWidget('Kundalini Yoga', false),
+                                  sessionWidget('Ashtanga Yoga', false),
                                 ],
                               )
                             ],
@@ -1534,9 +1536,9 @@ class _YogaPageState extends State<YogaPage> {
                         ),
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                          child: Text('$selectTitle', style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w700
+                          child: Text('Surprise Yoga', style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.w700
                           ),),
                         ),
                         SizedBox(height: 10,),
@@ -1544,35 +1546,35 @@ class _YogaPageState extends State<YogaPage> {
                           margin: EdgeInsets.symmetric(horizontal: 20),
                           padding: EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
-                              color: Colors.white,
-                              boxShadow: [BoxShadow(
-                                  color: Colors.black.withOpacity(0.15),
-                                  blurRadius: 15,
-                                  spreadRadius: 1
-                              )]
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            color: Colors.white,
+                            boxShadow: [BoxShadow(
+                              color: Colors.black.withOpacity(0.15),
+                              blurRadius: 15,
+                              spreadRadius: 1
+                            )]
                           ),
                           child: Row(
                             children: <Widget>[
                               Container(
                                 padding: EdgeInsets.all(50),
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage('asset/$selectedImg.png')
-                                    )
+                                  image: DecorationImage(
+                                    image: AssetImage('asset/$selectedImg.png')
+                                  )
                                 ),
                               ),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text('Basics 2', style: TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w700
+                                    Text('15 mins', style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w700
                                     ),),
-                                    Text('Start and deepen your patience', style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600
+                                    Text('Move, stretch, strengthen, and simply let go.', style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600
                                     ),)
                                   ],
                                 ),
@@ -1602,13 +1604,13 @@ class _YogaPageState extends State<YogaPage> {
                   children: <Widget>[
                     Column(
                       children: <Widget>[
-
+                        
                         Text('Today')
                       ],
                     ),
                     Column(
                       children: <Widget>[
-
+                        
                         Text('All Exercise', style: TextStyle(
                             color: Colors.orange,
                             fontWeight: FontWeight.w700,
@@ -1637,35 +1639,35 @@ class _YogaPageState extends State<YogaPage> {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-          color: Colors.white,
-          boxShadow: [BoxShadow(
-              color: Colors.black.withOpacity(0.15),
-              blurRadius: 15,
-              spreadRadius: 1
-          )]
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        color: Colors.white,
+        boxShadow: [BoxShadow(
+          color: Colors.black.withOpacity(0.15),
+          blurRadius: 15,
+          spreadRadius: 1
+        )]
       ),
       child: Row(
         children: <Widget>[
           Icon(
-            (activeOrNot == true) ? Icons.play_circle_filled : Icons.play_circle_outline,
+              (activeOrNot == true) ? Icons.play_circle_filled : Icons.play_circle_outline,
             color: Color(0xff817dc0),
             size: 50,
           ),
           SizedBox(width: 10,),
           Text('$title', style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600
+            fontSize: 18,
+            fontWeight: FontWeight.w600
           ),)
         ],
       ),
     );
   }
 }
-
-
-
-class SportPage extends StatefulWidget {
+         
+         
+         
+         class SportPage extends StatefulWidget {
   @override
   _SportPageState createState() => _SportPageState();
 }
@@ -1676,7 +1678,7 @@ class _SportPageState extends State<SportPage> {
     String selectedImg;
     String selectTitle;
     final Map arguments = ModalRoute.of(context).settings.arguments as Map;
-
+    
     return Scaffold(
       backgroundColor: Color(0xfff8f8f8),
       appBar: AppBar(
@@ -1685,7 +1687,7 @@ class _SportPageState extends State<SportPage> {
         leading: IconButton(
           onPressed: (){Navigator.pop(context);},
           icon: Icon(Icons.arrow_back_ios,
-            color: Colors.black,
+          color: Colors.black,
           ),
         ),
       ),
@@ -1700,10 +1702,10 @@ class _SportPageState extends State<SportPage> {
               margin: EdgeInsets.only(right: 40, top: 20, bottom: 20),
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('asset/splash.png'),
-                      fit: BoxFit.contain
-                  )
+                image: DecorationImage(
+                  image: AssetImage('asset/splash.png'),
+                  fit: BoxFit.contain
+                )
               ),
             ),
           ),
@@ -1718,9 +1720,9 @@ class _SportPageState extends State<SportPage> {
                       children: <Widget>[
                         Container(
                           padding: EdgeInsets.only(left: 20, right: 20),
-                          child: Text('$selectTitle', style: TextStyle(
-                              fontSize: 40,
-                              fontWeight: FontWeight.w700
+                          child: Text('Exercise', style: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.w700
                           ),),
                         ),
                         SizedBox(height: 10,),
@@ -1732,14 +1734,14 @@ class _SportPageState extends State<SportPage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text('3-10 Min Course', style: TextStyle(
-                                      fontSize: 19,
-                                      fontWeight: FontWeight.w600
+                                  Text('Your daily exercise routine is here.', style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600
                                   ),),
                                   SizedBox(height: 10,),
                                   Text('Remember that any exercise is better than no exercise.', style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600
                                   ),),
                                   SizedBox(height: 10,),
                                   Container(
@@ -1758,11 +1760,11 @@ class _SportPageState extends State<SportPage> {
                                         Expanded(
                                           child: TextField(
                                             decoration: InputDecoration(
-                                                border: InputBorder.none,
-                                                hintText: 'Search',
-                                                hintStyle: TextStyle(
-                                                  fontSize: 20,
-                                                )
+                                              border: InputBorder.none,
+                                              hintText: 'Search',
+                                              hintStyle: TextStyle(
+                                                fontSize: 20,
+                                              )
                                             ),
                                           ),
                                         )
@@ -1776,10 +1778,10 @@ class _SportPageState extends State<SportPage> {
                               child: Container(
                                 padding: EdgeInsets.all(70),
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage('asset/$selectedImg.png'),
-                                        fit: BoxFit.contain
-                                    )
+                                  image: DecorationImage(
+                                    image: AssetImage('asset/$selectedImg.png'),
+                                    fit: BoxFit.contain
+                                  )
                                 ),
                               ),
                             )
@@ -1796,22 +1798,22 @@ class _SportPageState extends State<SportPage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  sessionWidget('Session 1', true),
-                                  sessionWidget('Session 2', false),
+                                  sessionWidget('Workout at 09.00 AM', true),
+                                  sessionWidget('Workout at 12.00 PM', false),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  sessionWidget('Session 3', false),
-                                  sessionWidget('Session 4', false),
+                                  sessionWidget('Workout at 03.00 PM', false),
+                                  sessionWidget('Workout at 05.00 PM', false),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  sessionWidget('Session 5', false),
-                                  sessionWidget('Session 6', false),
+                                  sessionWidget('Workout at 07.00 PM', false),
+                                  sessionWidget('Workout at 09.00 PM', false),
                                 ],
                               )
                             ],
@@ -1819,9 +1821,9 @@ class _SportPageState extends State<SportPage> {
                         ),
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                          child: Text('$selectTitle', style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w700
+                          child: Text('Surprise Workout', style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.w700
                           ),),
                         ),
                         SizedBox(height: 10,),
@@ -1829,35 +1831,35 @@ class _SportPageState extends State<SportPage> {
                           margin: EdgeInsets.symmetric(horizontal: 20),
                           padding: EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
-                              color: Colors.white,
-                              boxShadow: [BoxShadow(
-                                  color: Colors.black.withOpacity(0.15),
-                                  blurRadius: 15,
-                                  spreadRadius: 1
-                              )]
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            color: Colors.white,
+                            boxShadow: [BoxShadow(
+                              color: Colors.black.withOpacity(0.15),
+                              blurRadius: 15,
+                              spreadRadius: 1
+                            )]
                           ),
                           child: Row(
                             children: <Widget>[
                               Container(
                                 padding: EdgeInsets.all(50),
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage('asset/$selectedImg.png')
-                                    )
+                                  image: DecorationImage(
+                                    image: AssetImage('asset/$selectedImg.png')
+                                  )
                                 ),
                               ),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text('Basics 2', style: TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w700
+                                    Text('15 mins', style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w700
                                     ),),
-                                    Text('Start and deepen your patience', style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600
+                                    Text('This workout will unlock if all the workouts are completed.', style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600
                                     ),)
                                   ],
                                 ),
@@ -1879,6 +1881,12 @@ class _SportPageState extends State<SportPage> {
                   ),
                 ),
               ),
+              
+              
+              
+              
+              
+              
               Container(
                 padding: EdgeInsets.symmetric(vertical: 10),
                 color: Colors.white,
@@ -1887,15 +1895,15 @@ class _SportPageState extends State<SportPage> {
                   children: <Widget>[
                     Column(
                       children: <Widget>[
-
+                        
                         Text('Today')
                       ],
                     ),
                     Column(
                       children: <Widget>[
-
-                        Text('All Exercise', style: TextStyle(
-                            color: Colors.orange,
+                        
+                        Text('Health and Wellness Tasks', style: TextStyle(
+                            color: Colors.blue[900],
                             fontWeight: FontWeight.w700,
                             fontSize: 20
                         ),)
@@ -1922,28 +1930,29 @@ class _SportPageState extends State<SportPage> {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-          color: Colors.white,
-          boxShadow: [BoxShadow(
-              color: Colors.black.withOpacity(0.15),
-              blurRadius: 15,
-              spreadRadius: 1
-          )]
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        color: Colors.white,
+        boxShadow: [BoxShadow(
+          color: Colors.black.withOpacity(0.15),
+          blurRadius: 15,
+          spreadRadius: 1
+        )]
       ),
       child: Row(
         children: <Widget>[
           Icon(
-            (activeOrNot == true) ? Icons.play_circle_filled : Icons.play_circle_outline,
+              (activeOrNot == true) ? Icons.play_circle_filled : Icons.play_circle_outline,
             color: Color(0xff817dc0),
             size: 50,
           ),
           SizedBox(width: 10,),
           Text('$title', style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600
+            fontSize: 18,
+            fontWeight: FontWeight.w600
           ),)
         ],
       ),
     );
   }
 }
+
